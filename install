@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -e
+
+SUFFIX=".conf.yaml"
+CONFIG="install"
+DOTBOT_DIR="dotbot"
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "${BASEDIR}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+source /etc/os-release
+case $ID in
+    arch)
+        echo "arch"
+        "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${ID}${SUFFIX}" --plugin-dir "${BASEDIR}/dotbot-yay" "${@}"
+        ;;
+    *)
+        echo "unknown distro ID: $ID, not doing anything special"
+        ;;
+esac
+
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}${SUFFIX}" "${@}"
