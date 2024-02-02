@@ -16,7 +16,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #
 # ESP_IDF
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
-export PATH=$PATH:"$HOME/.espressif/tools/esp-clang/15.0.0-23786128ae/esp-clang/bin"
+# export PATH=$PATH:"$HOME/.espressif/tools/esp-clang/15.0.0-23786128ae/esp-clang/bin"
 export PATH=$PATH:"$HOME/.local/bin"
 
 # PATHs

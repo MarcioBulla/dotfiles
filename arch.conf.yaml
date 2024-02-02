@@ -1,3 +1,4 @@
+---
 - pacman:
     - adobe-source-sans-fonts
     - adobe-source-serif-fonts
@@ -12,6 +13,7 @@
     - brightnessctl
     - btrfs-progs
     - clang
+    - dosfstools
     - evince
     - eza
     - firefox
@@ -30,22 +32,22 @@
     - kitty
     - libreoffice-still
     - man-db
+    - mtools
     - neofetch
     - neovim
     - noto-fonts
+    - nwg-look
     - openocd
     - pamixer
-    - pavucontrol
+    - pulsemixer
     - picocom
     - pipewire-alsa
     - pipewire-audio
-    - pipewire-jack
     - pipewire-pulse
     - platformio-core
     - prusa-slicer
     - python-pipx
     - starship
-    - steam
     - texlive-basic
     - texlive-xetex
     - thunar
@@ -59,7 +61,6 @@
     - ttf-liberation
     - tumbler
     - unzip
-    - vim
     - vlc
     - wget
     - wireplumber
@@ -70,7 +71,6 @@
     - zsh-autosuggestions
     - zsh-completions
     - zsh-syntax-highlighting
-
 - yay:
     - brave-bin
     - flat-remix
@@ -79,12 +79,12 @@
     - hyprshot
     - pcloud-drive
     - rofi-lbonn-wayland
+    - sddm-git
+    - sddm-theme-tokyo-night
     - showmethekey
     - teams
     - ttf-jetbrains-mono-git
     - vdhcoapp-bin
     - waybar-hyprland
     - webcord
-    - xdg-desktop-portal-hyprland-git
     - zoom
-

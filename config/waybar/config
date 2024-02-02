@@ -64,7 +64,7 @@
         "format-muted": "󰖁",
         "on-click": "pamixer -t",
         "on-scroll-up": "pamixer -i 5",
-        "on-click-right": "pavucontrol",
+        "on-click-right": "kitty --class waybartui -e pulsemixer",
         "on-scroll-down": "pamixer -d 5",
         "scroll-step": 5,
         "format-icons": {
@@ -86,7 +86,7 @@
         "on-click": "pamixer --default-source -t",
         "on-scroll-up": "pamixer --default-source -i 5",
         "on-scroll-down": "pamixer --default-source -d 5",
-        "on-click-right": "exec pavucontrol",
+        "on-click-right": "kitty --class waybartui -e pulsemixer",
         "scroll-step": 5,
         "min-length": 4
     },
@@ -111,7 +111,7 @@
         "tooltip-format-ethernet": "{ifname} ",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click-right": "exec nmtui",
+        "on-click-right": "kitty --class waybartui -e nmtui",
         "min-length": 5
     },
 
@@ -122,7 +122,7 @@
 	    "tooltip-format": "{device_alias}",
 	    "tooltip-format-connected": " {device_enumerate}",
 	    "tooltip-format-enumerate-connected": "{device_alias}",
-	    "on-click-right": "exec blueman-manager",
+	    "on-click-right": "kitty --class waybartui -e bluetuith",
 	    "on-click": "$HOME/.config/waybar/scripts/toggle_bluetooth.sh",
         "min-length": 5
     }
