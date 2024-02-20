@@ -21,12 +21,16 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
+
+      -- local signature = require("lsp_signature")
+
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
       })
       lspconfig.clangd.setup({
         cmd = {
           os.getenv("HOME") .. "/.espressif/tools/esp-clang/15.0.0-23786128ae/esp-clang/bin/clangd",
+          "--offset-encoding=utf-16",
         },
         capabilities = capabilities,
       })
@@ -41,6 +45,26 @@ return {
       })
       lspconfig.cmake.setup({
         capabilities = capabilities,
+      })
+    end,
+  },
+  {
+    "folke/neodev.nvim",
+    opts = {},
+    config = function()
+      require("neodev").setup({
+      })
+
+      local lspconfig = require("lspconfig")
+
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace",
+            },
+          },
+        },
       })
     end,
   },

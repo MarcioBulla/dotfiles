@@ -1,0 +1,13 @@
+wsl = false
+no-multigrid = false
+vsync = false
+maximized = false
+srgb = false
+idle = true
+neovim-bin = "/usr/bin/nvim" # in reality found dynamically on $PATH if unset
+frame = "none"
+title-hidden = true
+
+[font]
+normal = ["JetBrainsMono Nerd Font"]
+size = 14

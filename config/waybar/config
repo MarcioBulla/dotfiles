@@ -61,7 +61,6 @@
         "min-length": 6,
         "on-click": "hyprshade toggle blue-light-filter",
         "on-click-right": "hyprshade toggle vibrance",
-        "tooltip-format": "{:% hyprshade ls}"
     },
 
     "battery": {

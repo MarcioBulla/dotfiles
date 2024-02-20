@@ -16,6 +16,7 @@
     - dosfstools
     - evince
     - eza
+    - fd
     - firefox
     - freecad
     - github-cli
@@ -35,6 +36,7 @@
     - mtools
     - neofetch
     - neovim
+    - neovide
     - noto-fonts
     - nwg-look
     - openocd
@@ -45,8 +47,12 @@
     - pipewire-audio
     - pipewire-pulse
     - platformio-core
+    - polkit-gnome
     - prusa-slicer
     - python-pipx
+    - python-neovim
+    - ripgrep
+    - ruby
     - starship
     - texlive-basic
     - texlive-xetex
@@ -67,6 +73,7 @@
     - wl-clipboard
     - xclip
     - xdg-user-dirs
+    - xdg-desktop-portal-hyprland
     - zsh
     - zsh-autosuggestions
     - zsh-completions
@@ -86,6 +93,7 @@
     - teams
     - ttf-jetbrains-mono-git
     - vdhcoapp-bin
+    - volantes-cursors-git
     - waybar-hyprland
     - webcord
     - zoom
