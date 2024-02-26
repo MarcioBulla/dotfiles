@@ -200,15 +200,15 @@ wk.register({
 				end,
 				"Search symbols",
 			},
-      d = {"<cmd>Lspsaga show_line_diagnostics<cr>", "Show Diagnostic line"},
-      D = {"<cmd>Lspsaga show_workspace_diagnostics<cr>", "Show All Diagnostics"},
-      o = {"<cmd>Lspsaga outline<cr>", "Show Outline"},
-      ["]"] = {"<cmd>Lspsaga diagnostic_jump_next<cr>", "Jump Next Error"},
-      ["["] = {"<cmd>Lspsaga diagnostic_jump_prev<cr>", "Jump Prev Error"},
-      g = {"<cmd>Lspsaga goto_definition<cr>", "Go To Definition"},
-      G = {"<cmd>Lspsaga goto_type_definition<cr>", "Goto TYPE Definition"},
-      p = {"<cmd>Lspsaga peek_definition<cr>", "Preview Definition"},
-      P = {"<cmd>Lspsaga peek_type_definition<cr>", "Preview Definition"},
+			d = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show Diagnostic line" },
+			D = { "<cmd>Lspsaga show_workspace_diagnostics<cr>", "Show All Diagnostics" },
+			o = { "<cmd>Lspsaga outline<cr>", "Show Outline" },
+			["]"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Jump Next Error" },
+			["["] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Jump Prev Error" },
+			g = { "<cmd>Lspsaga goto_definition<cr>", "Go To Definition" },
+			G = { "<cmd>Lspsaga goto_type_definition<cr>", "Goto TYPE Definition" },
+			p = { "<cmd>Lspsaga peek_definition<cr>", "Preview Definition" },
+			P = { "<cmd>Lspsaga peek_type_definition<cr>", "Preview Definition" },
 		},
 
 		-- NEOGEN
@@ -333,4 +333,19 @@ wk.register({
 		end,
 		"Resize split right",
 	},
+
+	c = {
+		d = { mode = "n", ":cd", '"cd" Terminal', silent = false },
+	},
 })
+
+local opts = { noremap = true, silent = true }
+-- Normal-mode commands
+vim.keymap.set("n", "<A-j>", ":MoveLine(1)<CR>", opts)
+vim.keymap.set("n", "<A-k>", ":MoveLine(-1)<CR>", opts)
+vim.keymap.set("n", "<A-h>", ":MoveWord(-1)<CR>", opts)
+vim.keymap.set("n", "<A-l>", ":MoveWord(1)<CR>", opts)
+
+-- Visual-mode commands
+vim.keymap.set("v", "<A-j>", ":MoveBlock(1)<CR>", opts)
+vim.keymap.set("v", "<A-k>", ":MoveBlock(-1)<CR>", opts)

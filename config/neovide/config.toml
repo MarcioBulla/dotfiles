@@ -9,5 +9,12 @@ frame = "none"
 title-hidden = true
 
 [font]
-normal = ["JetBrainsMono Nerd Font"]
+normal = ["JetBrainsMono NF"]
+bold = ["JetBrainsMono NF ExtraBold"]
+# italic = ["JetBrainsMono NF Italic"]
+# bold_italic = ["JetBrainsMono NF BoldItalic"]
 size = 14
+hinting = "slight"
+
+# [font.features]
+# JetBrainsMono = [ "+ss01", "+ss07", "+ss11", "-calt", "+ss09", "+ss02", "+ss14", "+ss16", "+ss17" ]

@@ -1,32 +1,16 @@
 return {
 	{
-		"L3MON4D3/LuaSnip",
-		lazy = true,
-		build = vim.fn.has("win32") == 0
-				and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
-			or nil,
-		dependencies = { "rafamadriz/friendly-snippets" },
-		opts = {
-			history = true,
-			delete_check_events = "TextChanged",
-			region_check_events = "CursorMoved",
-		},
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp",
+			"onsails/lspkind.nvim",
 		},
 		event = "InsertEnter",
 		opts = function()
 			local cmp = require("cmp")
-			local snip_status_ok, luasnip = pcall(require, "luasnip")
-			if not snip_status_ok then
-				return
-			end
+			local lspkind = require("lspkind")
 			local border_opts = {
 				border = "rounded",
 				winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
@@ -42,6 +26,12 @@ return {
 				preselect = cmp.PreselectMode.None,
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
+					format = lspkind.cmp_format({
+						mode = "symbol",
+						maxwidth = 50,
+						ellipsis_char = "...",
+						symbol_map = { Codeium = "" },
+					}),
 				},
 				snippet = {
 					expand = function(args)
@@ -63,6 +53,14 @@ return {
 					completion = cmp.config.window.bordered(border_opts),
 					documentation = cmp.config.window.bordered(border_opts),
 				},
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp", priority = 1000 },
+					{ name = "luasnip", priority = 750 },
+					{ name = "buffer", priority = 500 },
+					{ name = "path", priority = 250 },
+					{ name = "codeium", priority = 50 },
+				}),
+
 				mapping = {
 					["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 					["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
@@ -97,12 +95,6 @@ return {
 						end
 					end, { "i", "s" }),
 				},
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp", priority = 1000 },
-					{ name = "luasnip", priority = 750 },
-					{ name = "buffer", priority = 500 },
-					{ name = "path", priority = 250 },
-				}),
 			}
 		end,
 	},

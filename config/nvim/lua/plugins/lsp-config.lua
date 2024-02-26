@@ -7,13 +7,9 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-        },
-      })
-    end,
+    opts = {
+      auto_install = true,
+    },
   },
   {
     "neovim/nvim-lspconfig",
@@ -21,8 +17,6 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
-
-      -- local signature = require("lsp_signature")
 
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
@@ -46,14 +40,19 @@ return {
       lspconfig.cmake.setup({
         capabilities = capabilities,
       })
+      lspconfig.jsonls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+      })
     end,
   },
   {
     "folke/neodev.nvim",
     opts = {},
     config = function()
-      require("neodev").setup({
-      })
+      require("neodev").setup({})
 
       local lspconfig = require("lspconfig")
 
