@@ -12,7 +12,5 @@
 - create: [~/esp]
 - shell:
     - [chsh -s $(which zsh), "Set ZSH as default"]
-    - [gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Red-Dark", Set Icons Theme]
-    - [gsettings set org.gnome.desktop.interface gtk-theme "Flat-Remix-GTK-Red-Dark", Set GTK Theme]
     - [sudo systemctl enable gdm.service NetworkManager, Enable network and gdm]
     - [git submodule update --init --recursive, Installing submodules]
