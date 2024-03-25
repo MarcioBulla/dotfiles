@@ -35,7 +35,7 @@
     "spacing": 10
   },
   "clock": {
-    "format": " {:%R %p 󰃭 %d·%m·%y}",
+    "format": " {:%I:%M %p 󰃭 %d·%m·%y}",
     "format-alt": "({:%A) 󰃭 %d of %B, %Y }",
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
