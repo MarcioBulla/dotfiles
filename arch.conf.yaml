@@ -33,6 +33,7 @@
     - kitty
     - libreoffice-still
     - man-db
+    - mpv
     - mtools
     - neofetch
     - neovim
@@ -75,6 +76,7 @@
     - xclip
     - xdg-user-dirs
     - xdg-desktop-portal-hyprland
+    - yt-dlp
     - zsh
     - zsh-autosuggestions
     - zsh-completions
@@ -93,7 +95,6 @@
     - showmethekey
     - teams
     - ttf-jetbrains-mono-git
-    - vdhcoapp-bin
     - volantes-cursors-git
     - webcord
     - zoom
