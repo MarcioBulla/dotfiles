@@ -16,6 +16,7 @@
     - dosfstools
     - evince
     - eza
+    - fastfetch
     - fd
     - firefox
     - freecad
@@ -33,9 +34,9 @@
     - kitty
     - libreoffice-still
     - man-db
+    - mako
     - mpv
     - mtools
-    - neofetch
     - neovim
     - neovide
     - noto-fonts

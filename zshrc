@@ -47,3 +47,5 @@ compinit
 # alias
 alias ls="eza --icons=auto"
 alias tree="eza --icons=auto -T"
+
+fastfetch -c ~/.config/fastfetch/startup.jsonc 
