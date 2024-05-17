@@ -20,6 +20,7 @@
     - fd
     - firefox
     - freecad
+    - fzf
     - github-cli
     - gthumb
     - htop
@@ -78,6 +79,7 @@
     - xdg-user-dirs
     - xdg-desktop-portal-hyprland
     - yt-dlp
+    - zoxide
     - zsh
     - zsh-autosuggestions
     - zsh-completions
@@ -86,6 +88,7 @@
     - brave-bin
     - flat-remix
     - flat-remix-gtk
+    - fzf-tab
     - hyprpicker
     - hyprshade
     - hyprshot

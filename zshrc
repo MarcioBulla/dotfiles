@@ -1,51 +1,53 @@
 # Created by newuser for 5.9
 
+
 export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
 
+# Lines configured
+HISTFILE=~/.histfile
+HISTSIZE=5000
+SAVEHIST=HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_verify
+
+
+# plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# autoload -Uz compinit promptinit
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
-# compinit
-# promptinit
-#
-# # This will set the default prompt to the walters theme
-# prompt walters
-#
-# ESP_IDF
-alias get_idf='. $HOME/esp/esp-idf/export.sh'
-# export PATH=$PATH:"$HOME/.espressif/tools/esp-clang/15.0.0-23786128ae/esp-clang/bin"
-export PATH=$PATH:"$HOME/.local/bin"
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)EZA_COLORS}"
 
-# PATHs
-
-export KICAD=$HOME/.local/share/kicad/7.0/
-export SUDO_EDITOR=/usr/bin/nvim
-
-
-
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-# End of lines configured by zsh-newuser-install
-# The following lines were read by zsh-newuser-install.
-# They were moved here as they could not be understood.
-# Tue Dec 12 04:49:36 AM UTC 2023
-# setopt autocd beep extendedglob
-# bindkey -e
-# End of lines moved by zsh-newuser-install.
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/coldjr/.zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
+
+# PATHs
+
+export PATH=$PATH:"$HOME/.local/bin"
+export KICAD=$HOME/.local/share/kicad/8.0/
+export SUDO_EDITOR=/usr/bin/nvim
+export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+
 
 # alias
 alias ls="eza --icons=auto"
 alias tree="eza --icons=auto -T"
+
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
 
 fastfetch -c ~/.config/fastfetch/startup.jsonc 
