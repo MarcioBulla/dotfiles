@@ -6,6 +6,7 @@
     - alsa-utils
     - arduino-cli
     - arduino-language-server
+    - bemenu-wayland
     - blueman
     - bluez
     - bluez-utils
@@ -93,7 +94,6 @@
     - hyprshade
     - hyprshot
     - pcloud-drive
-    - rofi-lbonn-wayland
     - sddm-git
     - sddm-theme-tokyo-night
     - showmethekey

@@ -49,6 +49,7 @@ export PATH=$PATH:"$HOME/.local/bin"
 export KICAD=$HOME/.local/share/kicad/8.0/
 export SUDO_EDITOR=/usr/bin/nvim
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
 
 
 # Shell Integrations
