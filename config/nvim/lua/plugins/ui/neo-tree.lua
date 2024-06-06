@@ -12,7 +12,7 @@ return {
 		vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
-		neotree = require("neo-tree")
+		local neotree = require("neo-tree")
 
 		neotree.setup({
 			close_if_last_window = true,
@@ -41,6 +41,7 @@ return {
 			},
 			window = {
 				width = 40,
+				position = "right",
 			},
 		})
 
@@ -52,7 +53,6 @@ return {
 			neo_tree.execute({
 				revel = true,
 				toggle = true,
-				position = "right",
 			})
 		end, { desc = "Toggle NeoTree" })
 		keymap.set("n", "<leader>o", function()

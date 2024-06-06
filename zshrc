@@ -40,7 +40,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $ realpath'
 
 # Aliases
 alias ls="eza --icons=auto"
-# alias cd=z
 alias tree="eza --icons=auto -T"
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
 
@@ -51,8 +50,8 @@ export SUDO_EDITOR=/usr/bin/nvim
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
 
-
 # Shell Integrations
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(register-python-argcomplete pipx)"

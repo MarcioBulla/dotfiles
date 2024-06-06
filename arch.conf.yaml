@@ -40,7 +40,6 @@
     - mpv
     - mtools
     - neovim
-    - neovide
     - noto-fonts
     - nwg-look
     - openocd
@@ -90,6 +89,7 @@
     - flat-remix
     - flat-remix-gtk
     - fzf-tab
+    - hyprland-relative-workspace
     - hyprpicker
     - hyprshade
     - hyprshot

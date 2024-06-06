@@ -8,22 +8,29 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 vim.opt.numberwidth = 3
-vim.opt.termguicolors = tru
+vim.opt.termguicolors = true
 
 vim.filetype.add({
 	pattern = {
-		[".*/hyprland%.conf"] = "hyprlang",
+		[".*/hypr/.*%.conf"] = "hyprlang",
 		[".*/waybar/config"] = "jsonc",
 		[".*/mako/config"] = "dosini",
 		[".*/kitty/*.conf"] = "bash",
 	},
 })
 
-if vim.g.neovide then
-	vim.g.neovide_transparency = 0.7
-	vim.g.neovide_scroll_animation_length = 0
-	vim.g.neovide_scroll_animation_far_lines = 0
-	vim.cmd("highlight Normal guibg=#2a1e1d")
-	vim.cmd("highlight Normal guifg=#dfdab7")
-	vim.g.neovide_fullscreen = true
-end
+-- Hyprlang LSP
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "*.hl", "hypr*.conf" },
+	callback = function(event)
+		print(string.format("starting hyprls for %s", vim.inspect(event)))
+		vim.lsp.start({
+			name = "hyprlang",
+			cmd = {
+				os.getenv("HOME") .. "/go/bin/hyprls",
+			},
+			autostart = true,
+			root_dir = vim.fn.getcwd(),
+		})
+	end,
+})

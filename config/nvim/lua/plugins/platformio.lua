@@ -5,4 +5,10 @@ return {
 		"nvim-telescope/telescope.nvim",
 		"nvim-lua/plenary.nvim",
 	},
+	config = function()
+
+		-- keymaps
+
+		-- vim.keymaps.set("n", "<leaderp>")
+	end,
 }

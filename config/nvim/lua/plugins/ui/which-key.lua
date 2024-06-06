@@ -23,6 +23,9 @@ return {
 		wk.register({
 			["<leader>h"] = { name = "Help", desc = "󱜸 Help Code" },
 		})
+		wk.register({
+			["<leader>V"] = { name = "Virtualenv", desc = " Vituralenv" },
+		})
 	end,
 	opts = {
 		opts = {
