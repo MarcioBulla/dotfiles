@@ -24,9 +24,10 @@ return {
 		local keymap = vim.keymap
 
 		keymap.set("n", "<leader>hd", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show Docstring" })
+		keymap.set("n", "<leader>li", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show Docstring" })
 		keymap.set("n", "<leader>lc", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 		keymap.set("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", { desc = "Raname Variable" })
-		keymap.set("n", "<leader>ld", "<cmd> Lspsaga show_line_diagnostics<CR>", { desc = "Show diagnostic line" })
+		keymap.set("n", "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "Show diagnostic line" })
 		keymap.set("n", "<leader>lD", "<cmd>Lspsaga show_workspace_diagnostics<cr>", { desc = "Show All Diagnostics" })
 		keymap.set("n", "<leader>lo", "<cmd>Lspsaga outline<cr>", { desc = "Show Outline" })
 		keymap.set("n", "<leader>l]", "<cmd>Lspsaga diagnostic_jump_next<cr>", { desc = "Jump Next Error" })

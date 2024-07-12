@@ -7,25 +7,18 @@ return {
 
 		wk.register({
 			["<leader>t"] = { name = " ToggleTerms" },
-		})
-		wk.register({
 			["<leader>f"] = { name = " Telescope" },
-		})
-		wk.register({
 			["<leader>b"] = { name = " BufferLine" },
+			["<leader>bS"] = { name = "󰒺 Sort by" },
+			["<leader>N"] = { name = "Neogen", desc = "󰅽 Auto Docstring" },
+			["<leader>h"] = { name = "Help", desc = "󱜸 Help Code" },
+			["<leader>p"] = { name = "Python", desc = " Python" },
+			["<leader>P"] = { name = "PlatformIO", desc = " PlatformIO" },
+			["<leader>z"] = { name = "Zig", desc = " Zig" },
 		})
 		wk.register({
 			["<leader>l"] = { name = " LSP" },
-		})
-		wk.register({
-			["<leader>N"] = { name = "Neogen", desc = "󰅽 Auto Docstring" },
-		})
-		wk.register({
-			["<leader>h"] = { name = "Help", desc = "󱜸 Help Code" },
-		})
-		wk.register({
-			["<leader>V"] = { name = "Virtualenv", desc = " Vituralenv" },
-		})
+		}, { mode = { "n", "v" } })
 	end,
 	opts = {
 		opts = {

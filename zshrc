@@ -1,4 +1,5 @@
 # START Terminal
+eval "$(starship init zsh)"
 fastfetch -c ~/.config/fastfetch/startup.jsonc 
 
 # Source Plugins
@@ -13,11 +14,17 @@ autoload -U compinit && compinit
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-kill-word
+bindkey '^[[3;5~' kill-word
+bindkey '^[[3~' delete-char
 
 #History
 HISTSIZE=5000
 SAVEHIST=HISTSIZE
-HISTFILE=~/.zsh_history
+HISTFILE=~/.HISTORY
 HISTDUP=erase
 
 setopt appendhistory
@@ -49,9 +56,11 @@ export KICAD=$HOME/.local/share/kicad/8.0/
 export SUDO_EDITOR=/usr/bin/nvim
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
+export EDITOR=/usr/bin/nvim
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
 
 # Shell Integrations
-eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(register-python-argcomplete pipx)"

@@ -34,5 +34,14 @@ return {
 		vim.keymap.set("n", "<leader>bP", "<cmd>BufferLinePickClose<CR>", { desc = "Close Pick Buffer" })
 		vim.keymap.set("n", "<leader>b<", "<cmd>BufferLineMovePrev<CR>", { desc = "Move Prev Buffer" })
 		vim.keymap.set("n", "<leader>b>", "<cmd>BufferLineMoveNext<CR>", { desc = "Move Next Buffer" })
+		vim.keymap.set("n", "<leader>bSe", "<cmd>BufferLineSortByExtension", { desc = "Sort by Extension" })
+		vim.keymap.set("n", "<leader>bSd", "<cmd>BufferLineSortByDirectory", { desc = "Sort by Directory" })
+		vim.keymap.set("n", "<leader>bSt", "<cmd>BufferLineSortByTabs", { desc = "Sort by Tabs" })
+		vim.keymap.set(
+			"n",
+			"<leader>bSr",
+			"<cmd>BufferLineSortByRelativeDirectory",
+			{ desc = "Sort by Relative Directory" }
+		)
 	end,
 }

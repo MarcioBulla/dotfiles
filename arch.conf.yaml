@@ -23,6 +23,7 @@
     - freecad
     - fzf
     - github-cli
+    - gnome-keyring
     - gthumb
     - htop
     - hyprland
@@ -35,8 +36,8 @@
     - kicad-library-3d
     - kitty
     - libreoffice-still
-    - man-db
     - mako
+    - man-db
     - mpv
     - mtools
     - neovim
@@ -44,7 +45,6 @@
     - nwg-look
     - openocd
     - pamixer
-    - pulsemixer
     - picocom
     - pipewire-alsa
     - pipewire-audio
@@ -52,8 +52,9 @@
     - platformio-core
     - polkit-gnome
     - prusa-slicer
-    - python-pipx
+    - pulsemixer
     - python-neovim
+    - python-pipx
     - ripgrep
     - ruby
     - starship
@@ -76,8 +77,8 @@
     - wireplumber
     - wl-clipboard
     - xclip
-    - xdg-user-dirs
     - xdg-desktop-portal-hyprland
+    - xdg-user-dirs
     - yt-dlp
     - zoxide
     - zsh
@@ -97,6 +98,7 @@
     - sddm-git
     - sddm-theme-tokyo-night
     - showmethekey
+    - superfile
     - teams
     - ttf-jetbrains-mono-git
     - volantes-cursors-git

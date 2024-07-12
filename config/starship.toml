@@ -13,6 +13,7 @@ style = "bold #f1fa8c"
 
 [directory]
 style = "bold #50fa7b"
+read_only = " "
 
 [git_branch]
 style = "bold #ff79c6"
@@ -23,6 +24,7 @@ style = "bold #ff5555"
 
 [hostname]
 style = "bold #bd93f9"
+ssh_symbol = " "
 
 [username]
 format = "[$user]($style) on "
@@ -31,18 +33,23 @@ style_user = "bold #8be9fd"
 [python]
 symbol = ' '
 
+[package]
+symbol = "󰏗 "
+disabled = true
+
 [battery]
 disabled = true
 
 [sudo]
 style = 'bold green'
-symbol = '💻'
+symbol = ' '
 disabled = false
 
+[os.symbols]
+Arch = " "
 
+[php]
+symbol = '󰌟 '
 
-# [git_branch]
-# symbol = ''
-# truncation_length = 10
-# truncation_symbol = ''
-# ignore_branches = ['master', 'main']
+[lua]
+symbol = ' '

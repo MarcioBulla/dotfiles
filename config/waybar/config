@@ -147,7 +147,7 @@
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click-right": "kitty --class waybartui -e nmtui",
+    "on-click-right": "kitty --class waybartui -e nmtui-connect",
     "min-length": 5
   },
   "bluetooth": {
