@@ -40,6 +40,7 @@
     - man-db
     - mpv
     - mtools
+    - nautilus
     - neovim
     - noto-fonts
     - nwg-look
@@ -60,7 +61,6 @@
     - starship
     - texlive-basic
     - texlive-xetex
-    - thunar
     - time
     - tor
     - torbrowser-launcher

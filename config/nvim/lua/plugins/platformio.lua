@@ -9,6 +9,7 @@ return {
 		-- keymaps
 
 		vim.keymap.set("n", "<leader>Pi", "<CMD>Pioinit<CR>", { desc = "Init Project" })
+		vim.keymap.set("n", "<leader>Pg", "<CMD>Piocmd run -t compiledb<CR>", { desc = "Gen Compiledb" })
 		vim.keymap.set("n", "<leader>Pu", "<CMD>Piorun upload<CR>", { desc = "Uploard" })
 		vim.keymap.set("n", "<leader>Pb", "<CMD>Piorun build<CR>", { desc = "Build" })
 		vim.keymap.set("n", "<leader>Pr", "<CMD>Piorun<CR>", { desc = "Build and Upload" })

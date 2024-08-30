@@ -19,7 +19,7 @@ return {
 				vim.opt.foldcolumn = "0"
 				vim.opt.signcolumn = "no"
 			end,
-			open_mapping = "<c-t>",
+			-- open_mapping = "<c-t>",
 			shading_factor = 2,
 			direction = "float",
 			float_opts = { border = "rounded" },

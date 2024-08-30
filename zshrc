@@ -1,5 +1,4 @@
 # START Terminal
-eval "$(starship init zsh)"
 fastfetch -c ~/.config/fastfetch/startup.jsonc 
 
 # Source Plugins
@@ -9,6 +8,12 @@ source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 
 # Enable AutoCompletion
 autoload -U compinit && compinit
+
+# Shell Integrations
+eval "$(starship init zsh)"
+eval "$(fzf --zsh)"
+eval "$(register-python-argcomplete pipx)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # Keybindings
 bindkey -e
@@ -59,8 +64,5 @@ export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
 export EDITOR=/usr/bin/nvim
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
+export IDF_PATH=$HOME/esp/esp-idf
 
-# Shell Integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(register-python-argcomplete pipx)"
