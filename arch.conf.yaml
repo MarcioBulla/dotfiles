@@ -1,7 +1,5 @@
 ---
 - pacman:
-    - adobe-source-sans-fonts
-    - adobe-source-serif-fonts
     - alsa-tools
     - alsa-utils
     - arduino-cli
@@ -12,13 +10,11 @@
     - bluez-utils
     - bottom
     - brightnessctl
-    - btrfs-progs
     - clang
     - dosfstools
     - evince
     - eza
     - fastfetch
-    - fd
     - firefox
     - freecad
     - fzf
@@ -42,6 +38,7 @@
     - mtools
     - nautilus
     - neovim
+    - nextcloud-client
     - noto-fonts
     - nwg-look
     - openocd
@@ -62,8 +59,6 @@
     - texlive-basic
     - texlive-xetex
     - time
-    - tor
-    - torbrowser-launcher
     - tree-sitter-cli
     - ttf-dejavu
     - ttf-inconsolata
@@ -90,17 +85,14 @@
     - flat-remix
     - flat-remix-gtk
     - fzf-tab
-    - hyprland-relative-workspace
     - hyprpicker
     - hyprshade
     - hyprshot
     - pcloud-drive
     - sddm-git
     - sddm-theme-tokyo-night
-    - showmethekey
     - superfile
     - teams
-    - ttf-jetbrains-mono-git
     - volantes-cursors-git
     - webcord
     - zoom

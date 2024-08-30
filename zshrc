@@ -50,11 +50,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $ realpath'
 
-# Aliases
-alias ls="eza --icons=auto"
-alias tree="eza --icons=auto -T"
-alias get_idf='. $HOME/esp/esp-idf/export.sh'
-
 # Paths
 export PATH=$PATH:"$HOME/.local/bin"
 export KICAD=$HOME/.local/share/kicad/8.0/
@@ -65,4 +60,10 @@ export EDITOR=/usr/bin/nvim
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 export IDF_PATH=$HOME/esp/esp-idf
+export DOTFILES=$HOME/.dotfiles
+
+# Aliases
+alias ls="eza --icons=auto"
+alias tree="eza --icons=auto -T"
+alias get_idf='. $IDF_PATH/export.sh'
 
