@@ -24,7 +24,7 @@ return {
 			"n",
 			"<leader>S",
 			require("auto-session.session-lens").search_session,
-			{ noremap = true, desc = " Session Lens" }
+			{ noremap = true, desc = "Session Lens" }
 		)
 	end,
 }

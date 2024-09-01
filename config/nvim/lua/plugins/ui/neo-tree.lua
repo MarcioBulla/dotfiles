@@ -54,7 +54,7 @@ return {
 				revel = true,
 				toggle = true,
 			})
-		end, { desc = " Toggle NeoTree" })
+		end, { desc = "Toggle NeoTree" })
 
 		keymap.set("n", "<leader>o", function()
 			if vim.bo.filetype == "neo-tree" then
@@ -62,6 +62,6 @@ return {
 			else
 				vim.cmd.Neotree("focus")
 			end
-		end, { desc = " Focus Neotree" })
+		end, { desc = "Focus Neotree" })
 	end,
 }
