@@ -5,6 +5,7 @@ fastfetch -c ~/.config/fastfetch/startup.jsonc
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
+source /usr/bin/virtualenvwrapper.sh
 
 # Enable AutoCompletion
 autoload -U compinit && compinit
@@ -54,13 +55,14 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $ realpath'
 export PATH=$PATH:"$HOME/.local/bin"
 export KICAD=$HOME/.local/share/kicad/8.0/
 export SUDO_EDITOR=/usr/bin/nvim
-export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab/
 export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
 export EDITOR=/usr/bin/nvim
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 export IDF_PATH=$HOME/esp/esp-idf
 export DOTFILES=$HOME/.dotfiles
+export WORKON_HOME=~/.virtualenvs
 
 # Aliases
 alias ls="eza --icons=auto"

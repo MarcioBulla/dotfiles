@@ -10,6 +10,7 @@
     - bluez-utils
     - bottom
     - brightnessctl
+    - btop
     - clang
     - dosfstools
     - evince
@@ -53,9 +54,13 @@
     - pulsemixer
     - python-neovim
     - python-pipx
+    - python-virtualenvwrapper 
     - ripgrep
     - ruby
     - starship
+    - swaybg
+    - swayidle
+    - swaylock
     - texlive-basic
     - texlive-xetex
     - time
@@ -81,18 +86,19 @@
     - zsh-completions
     - zsh-syntax-highlighting
 - yay:
+    - bluetuith
     - brave-bin
     - flat-remix
     - flat-remix-gtk
-    - fzf-tab
+    - fzf-tab-git
     - hyprpicker
     - hyprshade
     - hyprshot
     - pcloud-drive
     - sddm-git
-    - sddm-theme-tokyo-night
     - superfile
     - teams
     - volantes-cursors-git
     - webcord
+    - where_is_my_sddm_theme
     - zoom

@@ -5,12 +5,27 @@
       relink: true
 - clean: ['~', ~/.config]
 - link:
+    ~/.gitconfig:
+      force: true
     ~/.zshrc:
+      force: true
     ~/.config/:
       glob: true
+      force: true
       path: config/*
+    /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf:
+      path: sddm-theme.conf
+      force: true
+    /usr/share/sddm/themes/where_is_my_sddm_theme/Wallpaper:
+      path: Wallpaper/*
+      glob: true
+    ~/Pictures/Wallpaper:
+      path: Wallpaper/*
+      glob: true
+  
 - create: [~/esp]
 - shell:
     - [chsh -s $(which zsh), "Set ZSH as default"]
-    - [sudo systemctl enable gdm.service NetworkManager, Enable network and gdm]
+    - [sudo systemctl enable sddm NetworkManager bluetooth]
     - [git submodule update --init --recursive, Installing submodules]
+    - [go install github.com/ewen-lbh/hyprls/cmd/hyprls@latest]
