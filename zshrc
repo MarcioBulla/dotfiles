@@ -1,9 +1,9 @@
-# START Terminal
-fastfetch -c ~/.config/fastfetch/startup.jsonc 
+# Print fastfetch
+(fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm &) 
 
 # Source Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 source /usr/bin/virtualenvwrapper.sh
 
