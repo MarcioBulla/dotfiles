@@ -5,8 +5,9 @@ command_timeout = 10000
 style = "bold #ffb86c"
 
 [character]
-error_symbol = "[](bold #ff5555)"
-success_symbol = "[](bold #50fa7b)"
+error_symbol = "[󰜴](bold #ff5555)"
+success_symbol = "[󰜴](bold #50fa7b)"
+vimcmd_symbol = "[󰜱](bold #50fa7b)"
 
 [cmd_duration]
 style = "bold #f1fa8c"
