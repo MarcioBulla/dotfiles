@@ -1,20 +1,69 @@
-# Print fastfetch
-(fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm &) 
+# Zinit's storage plugins directory
+ZINIT_HOME="${XDF_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Source Plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
-source /usr/bin/virtualenvwrapper.sh
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME"
+fi
 
-# Enable AutoCompletion
+
+# Source/Load zinit
+source "$ZINIT_HOME/zinit.zsh"
+
+# Add in StarShip
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
+
+# add fast-syntax-highlighting
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
+# Add zsh-completions
+zinit light zsh-users/zsh-completions 
+
+# Add zsh-autosuggestions
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+
+# Add fzf-tab
+zinit light Aloxaf/fzf-tab
+zinit light lincheney/fzf-tab-completion
+
+# Add eza
+zinit ice wait lucid for \
+  has'eza' atinit'AUTOCD=1' 
+zinit light z-shell/zsh-eza
+
+# Add virtualenvwrapper
+zinit light python-virtualenvwrapper/virtualenvwrapper
+
+# Add Poetry
+zinit light darvid/zsh-poetry
+
+# Add pipx
+zinit wait lucid light-mode as"null" nocompile \
+  atclone"pipx install nox; register-python-argcomplete nox > zhook.zsh" \
+  atpull"pipx update nox; rm -f zhook.zsh; register-python-argcomplete nox > zhook.zsh" \
+  atdelete"pipx uninstall nox" \
+  atload"autoload bashcompinit && bashcompinit && source zhook.zsh" \
+for theacodes/nox
+
+# Load completions
 autoload -U compinit && compinit
 
-# Shell Integrations
-eval "$(starship init zsh)"
+zinit cdreplay -q
+
+# Shel integrations
 eval "$(fzf --zsh)"
-eval "$(register-python-argcomplete pipx)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(register-python-argcomplete pipx)"
 
 # Keybindings
 bindkey -e
@@ -27,12 +76,11 @@ bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 bindkey '^[[3~' delete-char
 
-#History
+# History
 HISTSIZE=5000
 SAVEHIST=HISTSIZE
 HISTFILE=~/.HISTORY
 HISTDUP=erase
-
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -41,15 +89,19 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-
 # Completion Stuling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion::complete:*' gain-privileges 1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons=always --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group '<' '>'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $ realpath'
+zstyle ':completion:*:*:cp:*' file-sort size
+zstyle ':completion:*' file-sort modification
+
+# Aliases
+alias get_idf=". $IDF_PATH/export.sh"
+alias to_clipboard="xclip -selection clipboard"
 
 # Paths
 export PATH=$PATH:"$HOME/.local/bin"
@@ -62,10 +114,11 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 export IDF_PATH=$HOME/esp/esp-idf
 export DOTFILES=$HOME/.dotfiles
-export WORKON_HOME=~/.virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/python # virtualenvwrapper project home
 
-# Aliases
-alias ls="eza --icons=auto"
-alias tree="eza --icons=auto -T"
-alias get_idf='. $IDF_PATH/export.sh'
+# Print fastfetch
+fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm 
 
+# Created by `pipx` on 2024-09-13 20:10:02
+export PATH="$PATH:/home/marcio/.local/bin"

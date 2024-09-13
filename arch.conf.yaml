@@ -22,7 +22,7 @@
     - github-cli
     - gnome-keyring
     - gthumb
-    - htop
+    - btop
     - hyprland
     - imagemagick
     - inkscape
@@ -54,7 +54,6 @@
     - pulsemixer
     - python-neovim
     - python-pipx
-    - python-virtualenvwrapper 
     - ripgrep
     - ruby
     - starship
@@ -68,7 +67,6 @@
     - ttf-dejavu
     - ttf-inconsolata
     - ttf-jetbrains-mono-nerd
-    - ttf-liberation
     - tumbler
     - unzip
     - vlc
@@ -82,9 +80,6 @@
     - yt-dlp
     - zoxide
     - zsh
-    - zsh-autosuggestions
-    - zsh-completions
-    - zsh-syntax-highlighting
 - yay:
     - bluetuith
     - brave-bin
