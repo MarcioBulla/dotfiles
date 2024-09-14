@@ -116,6 +116,7 @@ export IDF_PATH=$HOME/esp/esp-idf
 export DOTFILES=$HOME/.dotfiles
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/python # virtualenvwrapper project home
+export WALLPAPER=$HOME/Pictures/Wallpaper
 
 # Print fastfetch
 fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm 

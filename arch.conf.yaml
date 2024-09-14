@@ -22,8 +22,9 @@
     - github-cli
     - gnome-keyring
     - gthumb
-    - btop
+    - hypridle
     - hyprland
+    - hyprlock
     - imagemagick
     - inkscape
     - ipython
@@ -57,9 +58,6 @@
     - ripgrep
     - ruby
     - starship
-    - swaybg
-    - swayidle
-    - swaylock
     - texlive-basic
     - texlive-xetex
     - time
