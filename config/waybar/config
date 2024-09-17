@@ -101,9 +101,9 @@
     "tooltip": false,
     "format-muted": "󰖁",
     "on-click": "pamixer -t",
-    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-up": "pamixer -d 5",
     "on-click-right": "kitty --class waybartui -e pulsemixer",
-    "on-scroll-down": "pamixer -d 5",
+    "on-scroll-down": "pamixer -i 5",
     "scroll-step": 5,
     "format-icons": {
       "headphone": "",
@@ -125,8 +125,8 @@
     "format-source": " {volume}%",
     "format-source-muted": "",
     "on-click": "pamixer --default-source -t",
-    "on-scroll-up": "pamixer --default-source -i 5",
-    "on-scroll-down": "pamixer --default-source -d 5",
+    "on-scroll-up": "pamixer --default-source -d 5",
+    "on-scroll-down": "pamixer --default-source -i 5",
     "on-click-right": "kitty --class waybartui -e pulsemixer",
     "scroll-step": 5,
     "min-length": 4

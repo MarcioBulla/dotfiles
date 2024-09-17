@@ -1,3 +1,6 @@
+# Print fastfetch
+fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm 
+
 # Zinit's storage plugins directory
 ZINIT_HOME="${XDF_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -99,15 +102,11 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':completion:*:*:cp:*' file-sort size
 zstyle ':completion:*' file-sort modification
 
-# Aliases
-alias get_idf=". $IDF_PATH/export.sh"
-alias to_clipboard="xclip -selection clipboard"
-
 # Paths
 export PATH=$PATH:"$HOME/.local/bin"
 export KICAD=$HOME/.local/share/kicad/8.0/
 export SUDO_EDITOR=/usr/bin/nvim
-export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab/
+# export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab/
 export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
 export EDITOR=/usr/bin/nvim
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
@@ -118,8 +117,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/python # virtualenvwrapper project home
 export WALLPAPER=$HOME/Pictures/Wallpaper
 
-# Print fastfetch
-fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm 
+# Aliases
+alias get_idf=". $IDF_PATH/export.sh"
+alias to_clipboard="xclip -selection clipboard"
 
 # Created by `pipx` on 2024-09-13 20:10:02
 export PATH="$PATH:/home/marcio/.local/bin"
