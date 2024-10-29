@@ -34,7 +34,7 @@
     - kicad-library-3d
     - kitty
     - libreoffice-still
-    - mako
+    - swaync
     - man-db
     - mpv
     - mtools
@@ -42,6 +42,7 @@
     - neovim
     - nextcloud-client
     - noto-fonts
+    - numbat
     - nwg-look
     - openocd
     - pamixer

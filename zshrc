@@ -103,7 +103,6 @@ zstyle ':completion:*:*:cp:*' file-sort size
 zstyle ':completion:*' file-sort modification
 
 # Paths
-export PATH=$PATH:"$HOME/.local/bin"
 export KICAD=$HOME/.local/share/kicad/8.0/
 export SUDO_EDITOR=/usr/bin/nvim
 # export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab/
@@ -116,6 +115,8 @@ export DOTFILES=$HOME/.dotfiles
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/python # virtualenvwrapper project home
 export WALLPAPER=$HOME/Pictures/Wallpaper
+export FULLPROF=/usr/local/bin/FullProf_Suite
+export PATH=$PATH:"$HOME/.local/bin":$FULLPROF
 
 # Aliases
 alias get_idf=". $IDF_PATH/export.sh"
@@ -123,3 +124,4 @@ alias to_clipboard="xclip -selection clipboard"
 
 # Created by `pipx` on 2024-09-13 20:10:02
 export PATH="$PATH:/home/marcio/.local/bin"
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
