@@ -12,8 +12,6 @@
     - brightnessctl
     - btop
     - clang
-    - dosfstools
-    - evince
     - eza
     - fastfetch
     - firefox
@@ -34,7 +32,6 @@
     - kicad-library-3d
     - kitty
     - libreoffice-still
-    - swaync
     - man-db
     - mpv
     - mtools
@@ -43,10 +40,8 @@
     - nextcloud-client
     - noto-fonts
     - numbat
-    - nwg-look
     - openocd
     - pamixer
-    - picocom
     - pipewire-alsa
     - pipewire-audio
     - pipewire-pulse
@@ -56,17 +51,14 @@
     - pulsemixer
     - python-neovim
     - python-pipx
-    - ripgrep
-    - ruby
     - starship
+    - swaync
     - texlive-basic
     - texlive-xetex
     - time
     - tree-sitter-cli
     - ttf-dejavu
-    - ttf-inconsolata
     - ttf-jetbrains-mono-nerd
-    - tumbler
     - unzip
     - vlc
     - waybar
@@ -77,13 +69,13 @@
     - xdg-desktop-portal-hyprland
     - xdg-user-dirs
     - yt-dlp
+    - zig
+    - zip
     - zoxide
     - zsh
 - yay:
     - bluetuith
     - brave-bin
-    - flat-remix
-    - flat-remix-gtk
     - fzf-tab-git
     - hyprpicker
     - hyprshade
@@ -95,4 +87,3 @@
     - volantes-cursors-git
     - webcord
     - where_is_my_sddm_theme
-    - zoom

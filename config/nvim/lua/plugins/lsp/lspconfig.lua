@@ -6,13 +6,13 @@ return {
 
 		local lspconfig = require("lspconfig")
 
-		lspconfig.clangd.setup({
-			cmd = {
-				os.getenv("HOME") .. "/.espressif/tools/esp-clang/15.0.0-23786128ae/esp-clang/bin/clangd",
-				"--offset-encoding=utf-16",
-			},
-			capabilities = capabilities,
-		})
+    lspconfig.clangd.setup({
+      cmd = {
+       os.getenv("HOME") ..  "/.espressif/tools/esp-clang/16.0.1-fe4f10a809/esp-clang/bin/clangd"
+      },
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
 		lspconfig.hyprls.setup({
 			cmd = {
 				os.getenv("HOME") .. "/go/bin/hyprls",
