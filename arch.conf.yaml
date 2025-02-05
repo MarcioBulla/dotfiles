@@ -51,6 +51,7 @@
     - pulsemixer
     - python-neovim
     - python-pipx
+    - python-virtualenvwrapper
     - starship
     - swaync
     - texlive-basic
@@ -86,4 +87,4 @@
     - teams
     - volantes-cursors-git
     - webcord
-    - where_is_my_sddm_theme
+    - where-is-my-sddm-theme

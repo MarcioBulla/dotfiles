@@ -6,6 +6,7 @@ return {
 			background_colour = "#000000",
 			stages = "slide",
 			timeout = 2000,
+      top_down = false,
 		})
 
 		vim.keymap.set("n", "<leader>fn", function()
