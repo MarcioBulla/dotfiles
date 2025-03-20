@@ -23,6 +23,7 @@
     - hypridle
     - hyprland
     - hyprlock
+    - hyprpolkitagent
     - imagemagick
     - inkscape
     - ipython
@@ -46,8 +47,6 @@
     - pipewire-audio
     - pipewire-pulse
     - platformio-core
-    - polkit-gnome
-    - prusa-slicer
     - pulsemixer
     - python-neovim
     - python-pipx
@@ -81,6 +80,7 @@
     - hyprpicker
     - hyprshade
     - hyprshot
+    - orca-slicer-bin
     - pcloud-drive
     - sddm-git
     - superfile
