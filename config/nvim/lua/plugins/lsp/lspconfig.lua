@@ -8,7 +8,7 @@ return {
 
     lspconfig.clangd.setup({
       cmd = {
-        "clangd",
+        os.getenv("HOME") .. "/.espressif/tools/esp-clang/esp-18.1.2_20240912/esp-clang/bin/clangd",
         "--compile-commands-dir=build"
       },
       init_options = {},

@@ -121,6 +121,8 @@ export PATH=$PATH:"$HOME/.local/bin":$FULLPROF
 # Aliases
 alias get_idf=". $IDF_PATH/export.sh"
 alias to_clipboard="xclip -selection clipboard"
+alias freecad="env -u WAYLAND_DISPLAY freecad"
+alias FreeCAD="env -u WAYLAND_DISPLAY freecad"
 
 # Created by `pipx` on 2024-09-13 20:10:02
 export PATH="$PATH:/home/marcio/.local/bin"

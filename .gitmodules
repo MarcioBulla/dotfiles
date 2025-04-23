@@ -4,3 +4,6 @@
 [submodule "dotbot-yay"]
 	path = dotbot-yay
 	url = https://github.com/alexwh/dotbot-yay
+[submodule "icon/flat-remix"]
+	path = icon/flat-remix
+	url = https://github.com/daniruiz/flat-remix
