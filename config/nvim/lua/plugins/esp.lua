@@ -1,3 +1,9 @@
 return {
-	"Aietes/esp32.nvim",
+	"MarcioBulla/esp32.nvim",
+	dependencies = {
+		"akinsho/toggleterm.nvim",
+	},
+	opts = {
+		build_dir = "build",
+	},
 }
