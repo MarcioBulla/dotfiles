@@ -23,9 +23,10 @@ return {
 			{ "<leader>/", group = "Toggle comment line", icon = "" },
 			{ "<leader>/", group = "Toggle comment for selection", icon = "", mode = "v" },
 			{ "<leader>l", group = "LSP", icon = "", mode = { "n", "v" } },
-      {"<leader>S", group = "Auto Session", icon = " " },
-    })
-
+			{ "<leader>S", group = "Auto Session", icon = "" },
+			{ "<leader>O", group = "Obsidian", icon = "" },
+			{ "<leader>R", group = "ESP IDF", icon = "" },
+		})
 	end,
 	opt = { icons = { mappings = false } },
 }
