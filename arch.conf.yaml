@@ -1,28 +1,39 @@
 ---
 - pacman:
-    - alsa-tools
-    - alsa-utils
+    - arch-linux-xdg-menu
     - arduino-cli
     - arduino-language-server
+    - ark
     - bemenu-wayland
     - blueman
     - bluez
     - bluez-utils
-    - bottom
     - brightnessctl
     - btop
     - clang
+    - dolphin
+    - dolphin-plugins
+    - dunst
     - eza
     - fastfetch
+    - ffmpeg
     - firefox
     - freecad
     - fzf
     - github-cli
-    - gnome-keyring
+    - gnome-kering
+    - gst-libav
+    - gst-plugins-bad
+    - gst-plugins-base
+    - gst-plugins-good
+    - gst-plugins-ugly
+    - gstreamer
     - gthumb
+    - hyprcursor
     - hypridle
     - hyprland
     - hyprlock
+    - hyprpicker
     - hyprpolkitagent
     - imagemagick
     - inkscape
@@ -31,60 +42,72 @@
     - kicad
     - kicad-library
     - kicad-library-3d
+    - kio-admin
     - kitty
     - libreoffice-still
     - man-db
     - mpv
+    - mpv
     - mtools
-    - nautilus
     - neovim
     - nextcloud-client
     - noto-fonts
+    - noto-fonts
     - numbat
+    - nwg-look
     - openocd
     - pamixer
     - pipewire-alsa
     - pipewire-audio
+    - pipewire-jack
     - pipewire-pulse
     - platformio-core
-    - pulsemixer
+    - polkit-kde-agent
     - python-neovim
     - python-pipx
     - python-virtualenvwrapper
+    - qt5-wayland
+    - qt6-wayland
     - starship
     - swaync
-    - texlive-basic
-    - texlive-xetex
-    - time
     - tree-sitter-cli
-    - ttf-dejavu
     - ttf-jetbrains-mono-nerd
+    - ttf-opensans
     - unzip
-    - vlc
     - waybar
     - wget
     - wireplumber
     - wl-clipboard
     - xclip
+    - xdg-desktop-portal-gtk
     - xdg-desktop-portal-hyprland
     - xdg-user-dirs
+    - xdg-user-dirs-gtk
     - yt-dlp
     - zig
     - zip
     - zoxide
     - zsh
 - yay:
+    - 
     - bluetuith
     - brave-bin
+    - flat-remix
+    - flat-remix-gnome
+    - flat-remix-gtk
+    - flat-remix-kde-git
     - fzf-tab-git
-    - hyprpicker
     - hyprshade
     - hyprshot
     - orca-slicer-bin
-    - pcloud-drive
+    - paru
+    - qt5ct-kde
+    - qt6ct-kde
+    - qview
     - sddm-git
     - superfile
     - teams
     - volantes-cursors-git
     - webcord
     - where-is-my-sddm-theme
+    - wlogout

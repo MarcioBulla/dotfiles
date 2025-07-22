@@ -24,6 +24,7 @@
 - shell:
     - [chsh -s $(which zsh), "Set ZSH as default"]
     - [sudo systemctl enable sddm NetworkManager bluetooth]
+    - [systemctl --user enable pipewire pipewire-pulse wireplumber]
     - [git submodule update --init --recursive, Installing submodules]
     - [go install github.com/ewen-lbh/hyprls/cmd/hyprls@latest]
     - [sudo cp $HOME/Pictures/Wallpaper/wall1.png /usr/share/sddm/themes/where_is_my_sddm_theme/wallpaper.png]
