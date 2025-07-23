@@ -3,4 +3,4 @@
 	url = https://github.com/anishathalye/dotbot
 [submodule "dotbot-paru"]
 	path = dotbot-paru
-	url = https://github.com/michaelray27/dotbot-paru.git
+	url = https://github.com/ConnorJC3/dotbot-paru.git

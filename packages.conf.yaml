@@ -1,34 +1,26 @@
 ---
-- paru:
+- pacman:
     - archlinux-xdg-menu
     - arduino-cli
     - arduino-language-server
     - ark
     - bemenu-wayland
     - blueman
-    - bluetuith
     - bluez
     - bluez-utils
-    - brave-bin
     - brightnessctl
     - btop
     - clang
     - dolphin
     - dolphin-plugins
-    - dunst
     - eza
     - fastfetch
     - ffmpeg
     - firefox
-    - flat-remix
-    - flat-remix-gnome
-    - flat-remix-gtk
-    - flat-remix-kde-git
     - freecad
     - fzf
-    - fzf-tab-git
     - github-cli
-    - gnome-kering
+    - gnome-keyring
     - gst-libav
     - gst-plugins-bad
     - gst-plugins-base
@@ -42,8 +34,6 @@
     - hyprlock
     - hyprpicker
     - hyprpolkitagent
-    - hyprshade
-    - hyprshot
     - imagemagick
     - inkscape
     - ipython
@@ -65,9 +55,7 @@
     - numbat
     - nwg-look
     - openocd
-    - orca-slicer-bin
     - pamixer
-    - paru
     - pipewire-alsa
     - pipewire-audio
     - pipewire-jack
@@ -78,27 +66,19 @@
     - python-pipx
     - python-virtualenvwrapper
     - qt5-wayland
-    - qt5ct-kde
     - qt6-wayland
-    - qt6ct-kde
-    - qview
-    - sddm-git
     - starship
-    - superfile
     - swaync
-    - teams
+    - syncthing
     - tree-sitter-cli
     - ttf-jetbrains-mono-nerd
     - ttf-opensans
     - unzip
-    - volantes-cursors-git
+    - uv
     - waybar
-    - webcord
     - wget
-    - where-is-my-sddm-theme
     - wireplumber
     - wl-clipboard
-    - wlogout
     - xclip
     - xdg-desktop-portal-gtk
     - xdg-desktop-portal-hyprland
@@ -109,3 +89,25 @@
     - zip
     - zoxide
     - zsh
+- paru:
+    - bluetuith
+    - brave-bin
+    - flat-remix
+    - flat-remix-gnome
+    - flat-remix-gtk
+    - flat-remix-kde-git
+    - fzf-tab-git
+    - hyprshade
+    - hyprshot
+    - orca-slicer-bin
+    - qt5ct-kde
+    - qt6ct-kde
+    - qview
+    - sddm-git
+    - superfile
+    - syncthingtray
+    - teams
+    - volantes-cursors-git
+    - webcord
+    - where-is-my-sddm-theme
+    - wlogout-git

@@ -13,26 +13,16 @@
       glob: true
       force: true
       path: config/*
-    /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf:
-      path: sddm-theme.conf
-      force: true
     ~/Pictures/Wallpaper:
       path: Wallpaper/*
       glob: true
-
-- plugins:
-  - dotbot-paru/paru.py
   
-- create: [~/esp]
 - shell:
     - [chsh -s $(which zsh), "Set ZSH as default"]
-    - [sudo systemctl enable sddm NetworkManager bluetooth]
+    - [sudo systemctl enable sddm NetworkManager bluetooth syncthing@$(whoami).service]
     - [systemctl --user enable pipewire pipewire-pulse wireplumber]
     - [git submodule update --init --recursive, Installing submodules]
     - [go install github.com/ewen-lbh/hyprls/cmd/hyprls@latest]
-    - [sudo cp $HOME/Pictures/Wallpaper/wall1.png /usr/share/sddm/themes/where_is_my_sddm_theme/wallpaper.png]
-    - [sudo rm /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf] 
-    - [sudo cp $DOTFILES/sddm-theme.conf /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf]
-
-
-
+    - [sudo cp -f $DOTFILES/sddm-theme.conf /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf]
+    - [sudo cp -f $HOME/Pictures/Wallpaper/wall1.png /usr/share/sddm/themes/where_is_my_sddm_theme/wallpaper.png]
+    - [sudo cp -f $DOTFILES/sddm.conf /etc/sddm.conf]
