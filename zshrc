@@ -27,6 +27,7 @@ zinit wait lucid for \
     zsh-users/zsh-completions \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
+zinit ice wait"0" lucid once atclone'fast-theme XDG:catppuccin-frappe'
 
 # Add zsh-completions
 zinit light zsh-users/zsh-completions 
