@@ -19,6 +19,9 @@
     ~/Pictures/Wallpaper:
       path: Wallpaper/*
       glob: true
+
+- plugins:
+  - dotbot-paru/paru.py
   
 - create: [~/esp]
 - shell:
@@ -30,3 +33,6 @@
     - [sudo cp $HOME/Pictures/Wallpaper/wall1.png /usr/share/sddm/themes/where_is_my_sddm_theme/wallpaper.png]
     - [sudo rm /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf] 
     - [sudo cp $DOTFILES/sddm-theme.conf /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf]
+
+
+
