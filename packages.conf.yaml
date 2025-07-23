@@ -42,6 +42,7 @@
     - kicad-library
     - kicad-library-3d
     - kio-admin
+    - kde-cli-tools
     - kitty
     - libreoffice-still
     - man-db
