@@ -1,11 +1,11 @@
 return {
   "catppuccin/nvim",
-  name = "mocchiato",
+  name = "catppuccin",
   priority = 1000,
   config = function()
     require("catppuccin").setup({
       transparent_background = true
     })
-    vim.cmd.colorscheme("mocchiato")
+    vim.cmd.colorscheme("catppuccin")
   end,
 }

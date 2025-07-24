@@ -4,8 +4,6 @@
     - arduino-cli
     - arduino-language-server
     - ark
-    - bemenu-wayland
-    - blueman
     - bluez
     - bluez-utils
     - brightnessctl
@@ -69,6 +67,7 @@
     - python-virtualenvwrapper
     - qt5-wayland
     - qt6-wayland
+    - rofi-wayland
     - starship
     - swaync
     - syncthing

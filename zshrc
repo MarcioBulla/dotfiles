@@ -1,130 +1,172 @@
-# Print fastfetch
-fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm 
+# Profiling (descomente para debug de performance)
+# zmodload zsh/zprof
+
+# Fastfetch primeiro - antes do prompt estar disponível
+fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm 2>/dev/null || true
 
 # Zinit's storage plugins directory
-ZINIT_HOME="${XDF_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-if [ ! -d "$ZINIT_HOME" ]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME"
+# Instalação lazy do Zinit
+if [[ ! -f "$ZINIT_HOME/zinit.zsh" ]]; then
+  print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+  command mkdir -p "$ZINIT_HOME" && command chmod g-rwX "$ZINIT_HOME"
+  command git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME" && \
+    print -P "%F{33} %F{34}Installation successful.%f%b" || \
+    print -P "%F{160} The clone has failed.%f%b"
 fi
-
 
 # Source/Load zinit
 source "$ZINIT_HOME/zinit.zsh"
 
-# Add in StarShip
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
+# Configurações de história otimizadas
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTFILE=~/.HISTORY
+HISTDUP=erase
+setopt EXTENDED_HISTORY          # Record timestamp of command
+setopt HIST_EXPIRE_DUPS_FIRST    # Delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt HIST_IGNORE_DUPS          # Ignore duplicated commands history list
+setopt HIST_IGNORE_SPACE         # Ignore commands that start with space
+setopt HIST_VERIFY               # Show command with history expansion to user before running it
+setopt SHARE_HISTORY             # Share command history data
+setopt HIST_SAVE_NO_DUPS         # Don't save duplicates
+setopt HIST_FIND_NO_DUPS         # Don't display duplicates
 
-# add fast-syntax-highlighting
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
-zinit ice wait"0" lucid once atclone'fast-theme XDG:catppuccin-frappe'
+# Outras opções úteis
+setopt AUTO_CD                   # Change directory just by typing its name
+setopt CORRECT                   # Auto correct mistakes
+setopt MAGIC_EQUAL_SUBST         # Enable filename expansion for arguments of form 'anything=expression'
+setopt NOTIFY                    # Report status of background jobs immediately
+setopt NUMERICGLOBSORT          # Sort filenames numerically when it makes sense
+setopt PROMPT_SUBST             # Enable command substitution in prompt
 
-# Add zsh-completions
-zinit light zsh-users/zsh-completions 
+# Completion styling - configurado antes dos plugins
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USERNAME -o pid,user,comm -w -w"
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion::complete:*' use-cache yes
+zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
+zstyle ':completion:*' menu no
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '[%d]'
 
-# Add zsh-autosuggestions
-zinit ice wait lucid atload'_zsh_autosuggest_start'
-zinit light zsh-users/zsh-autosuggestions
+# FZF-tab specific
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons=always --color=always $realpath'
+zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:*' continuous-trigger '/'
 
-# Add fzf-tab
-zinit light Aloxaf/fzf-tab
-zinit light lincheney/fzf-tab-completion
-
-# Add eza
-zinit ice wait lucid for \
-  has'eza' atinit'AUTOCD=1' 
-zinit light z-shell/zsh-eza
-
-# Add virtualenvwrapper
-zinit light python-virtualenvwrapper/virtualenvwrapper
-
-# Add Poetry
-zinit light darvid/zsh-poetry
-
-# Add pipx
-zinit wait lucid light-mode as"null" nocompile \
-  atclone"pipx install nox; register-python-argcomplete nox > zhook.zsh" \
-  atpull"pipx update nox; rm -f zhook.zsh; register-python-argcomplete nox > zhook.zsh" \
-  atdelete"pipx uninstall nox" \
-  atload"autoload bashcompinit && bashcompinit && source zhook.zsh" \
-for theacodes/nox
-
-# Load completions
-autoload -U compinit && compinit
-
-zinit cdreplay -q
-
-# Shel integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(register-python-argcomplete pipx)"
-
-# Keybindings
-bindkey -e
+# Keybindings otimizados
+bindkey -e  # Emacs mode
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey '^[[1;5D' backward-word
+bindkey '^[w' kill-region
+bindkey '^r' history-incremental-search-backward
 bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[5~' beginning-of-buffer-or-history
+bindkey '^[[6~' end-of-buffer-or-history
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[Z' undo
 bindkey '^?' backward-delete-char
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 bindkey '^[[3~' delete-char
 
-# History
-HISTSIZE=5000
-SAVEHIST=HISTSIZE
-HISTFILE=~/.HISTORY
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+# Paths - definidos cedo para evitar problemas
+export EDITOR="${EDITOR:-nvim}"
+export SUDO_EDITOR="$EDITOR"
+export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-17-openjdk}"
+export IDF_PATH="${HOME}/esp/esp-idf"
+export DOTFILES="${HOME}/.dotfiles"
+export WORKON_HOME="${HOME}/.virtualenvs"
+export PROJECT_HOME="${HOME}/python"
+export HYPRSHOT_DIR="${HOME}/Pictures/Screenshots"
+export WALLPAPER="${HOME}/Pictures/Wallpaper"
+export KICAD="${HOME}/.local/share/kicad/8.0/"
 
-# Completion Stuling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion::complete:*' gain-privileges 1
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons=always --color=always $realpath'
-zstyle ':fzf-tab:*' switch-group '<' '>'
-zstyle ':completion:*:*:cp:*' file-sort size
-zstyle ':completion:*' file-sort modification
+# PATH otimizado - evita duplicatas
+typeset -U path PATH
+path=(
+    "$JAVA_HOME/bin"
+    "$HOME/.local/bin"
+    $path
+)
+export PATH
 
-# Paths
-export KICAD=$HOME/.local/share/kicad/8.0/
-export SUDO_EDITOR=/usr/bin/nvim
-# export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab/
-export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
-export EDITOR=/usr/bin/nvim
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-export PATH=$JAVA_HOME/bin:$PATH
-export IDF_PATH=$HOME/esp/esp-idf
-export DOTFILES=$HOME/.dotfiles
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/python # virtualenvwrapper project home
-export WALLPAPER=$HOME/Pictures/Wallpaper
-export FULLPROF=/usr/local/bin/FullProf_Suite
-export PATH=$PATH:"$HOME/.local/bin":$FULLPROF
+# Prompt - Starship carregado primeiro para melhor UX
+zinit ice as"command" from"gh-r" \
+    atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+    atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
-# Aliases
-alias get_idf=". $IDF_PATH/export.sh"
+# Completions - carregamento primeiro
+zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    blockf \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
+
+# Syntax highlighting - depois das completions
+zinit wait"0a" lucid for \
+        zdharma-continuum/fast-syntax-highlighting
+
+# FZF tools - carregamento escalonado
+zinit wait"0b" lucid for \
+        Aloxaf/fzf-tab
+
+# Tools condicionais - só carrega se necessário
+zinit wait"1a" lucid has"eza" for \
+    z-shell/zsh-eza
+
+zinit wait"1b" lucid has"fzf" for \
+    lincheney/fzf-tab-completion
+
+# Python tools - carregamento tardio para não impactar startup
+zinit wait"2a" lucid has"python3" for \
+    darvid/zsh-poetry
+
+zinit wait"2b" lucid has"virtualenvwrapper.sh" nocd for \
+    python-virtualenvwrapper/virtualenvwrapper
+
+# Integração de ferramentas externas - muito tardio
+zinit wait"3" lucid nocd as"null" id-as"external-tools" \
+    atload'
+        # FZF integration
+        [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+        command -v fzf >/dev/null && eval "$(fzf --zsh)" 2>/dev/null
+        
+        # Zoxide integration  
+        command -v zoxide >/dev/null && eval "$(zoxide init --cmd cd zsh)" 2>/dev/null
+        
+        # UV integration
+        command -v uv >/dev/null && eval "$(uv generate-shell-completion zsh)" 2>/dev/null
+    ' \
+for zdharma-continuum/null
+
+get_idf() {
+  source "$IDF_PATH/export.sh"
+}
+
 alias to_clipboard="xclip -selection clipboard"
 alias freecad="env -u WAYLAND_DISPLAY freecad"
 alias FreeCAD="env -u WAYLAND_DISPLAY freecad"
 
-# Created by `pipx` on 2024-09-13 20:10:02
-export PATH="$PATH:/home/marcio/.local/bin"
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+if command -v eza >/dev/null; then
+  alias ls='eza --icons --group-directories-first'
+  alias ll='eza -l --icons'
+  alias la='eza -la --icons'
+  alias lt='eza --tree --icons --level=2'
+else
+  alias ls='ls --color=auto'
+fi
+
+
+

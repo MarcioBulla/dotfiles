@@ -20,7 +20,7 @@
 - shell:
     - [chsh -s $(which zsh), "Set ZSH as default"]
     - [sudo systemctl enable sddm NetworkManager bluetooth syncthing@$(whoami).service]
-    - [systemctl --user enable pipewire pipewire-pulse wireplumber]
+    - [systemctl --user enable pipewire pipewire-pulse wireplumber swaync]
     - [git submodule update --init --recursive, Installing submodules]
     - [go install github.com/ewen-lbh/hyprls/cmd/hyprls@latest]
     - [sudo cp -f $DOTFILES/sddm-theme.conf /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf]
