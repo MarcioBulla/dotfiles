@@ -1,6 +1,5 @@
 [Desktop Entry]
 Name=Nextcloud
-After=waybar.service
 GenericName=File Synchronizer
 Exec="/usr/bin/nextcloud" --background
 Terminal=false

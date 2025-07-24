@@ -157,6 +157,7 @@ get_idf() {
 alias to_clipboard="xclip -selection clipboard"
 alias freecad="env -u WAYLAND_DISPLAY freecad"
 alias FreeCAD="env -u WAYLAND_DISPLAY freecad"
+alias mmdc="npx -p @mermaid-js/mermaid-cli mmdc"
 
 
 if command -v eza >/dev/null; then

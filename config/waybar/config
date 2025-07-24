@@ -100,42 +100,42 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "tooltip": false,
-    "format-muted": "󰖁",
+    "format-muted": "  󰖁  ",
     "on-click": "pamixer -t",
     "on-scroll-up": "pamixer -d 5",
     "on-click-right": "kitty --class waybartui -e pulsemixer",
     "on-scroll-down": "pamixer -i 5",
     "scroll-step": 5,
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
       "default": [
-        "",
-        "",
-        ""
+        "",
+        "",
+        ""
       ]
     },
-    "min-length": 4
+    "min-length": 6
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": "",
+    "format-source": " {volume}%",
+    "format-source-muted": "    ",
     "on-click": "pamixer --default-source -t",
     "on-scroll-up": "pamixer --default-source -d 5",
     "on-scroll-down": "pamixer --default-source -i 5",
     "on-click-right": "kitty --class waybartui -e pulsemixer",
     "scroll-step": 5,
-    "min-length": 4
+    "min-length": 6
   },
   "temperature": {
     "thermal-zone": 1,
     "critical-threshold": 80,
-    "format": "{temperatureC}°C "
+    "format": "{temperatureC}°C "
   },
   "network": {
     "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}",
@@ -152,11 +152,11 @@
     "min-length": 5
   },
   "bluetooth": {
-    "format": " {status}",
-    "format-disabled": " dis",
-    "format-connected": " {num_connections}",
+    "format": " {status}",
+    "format-disabled": " dis",
+    "format-connected": " {num_connections}",
     "tooltip-format": "{device_alias}",
-    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-connected": " {device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
     "on-click-right": "kitty --class waybartui -e bluetuith",
     "on-click": "$HOME/.config/waybar/scripts/toggle_bluetooth.sh",
