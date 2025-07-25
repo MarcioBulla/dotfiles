@@ -1,0 +1,14 @@
+[Unit]
+Description=KeePassXC
+PartOf=graphical-session.target
+After=graphical-session.target
+Requires=graphical-session.target
+
+[Service]
+ExecStartPre=/usr/bin/sleep 11
+ExecStart=/usr/bin/keepassxc
+Restart=on-failure
+RestartSec=1
+
+[Install]
+WantedBy=graphical-session.target
