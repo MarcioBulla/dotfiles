@@ -1,5 +1,5 @@
 # Profiling (descomente para debug de performance)
-# zmodload zsh/zprof
+ # zmodload zsh/zprof
 
 # Fastfetch primeiro - antes do prompt estar disponível
 fastfetch -c ~/.config/fastfetch/startup.jsonc --ds-force-drm 2>/dev/null || true
@@ -100,7 +100,7 @@ path=(
 export PATH
 
 # Prompt - Starship carregado primeiro para melhor UX
-zinit ice as"command" from"gh-r" \
+zinit ice turbo as"command" from"gh-r" \
     atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
     atpull"%atclone" src"init.zsh"
 zinit light starship/starship
@@ -168,6 +168,4 @@ if command -v eza >/dev/null; then
 else
   alias ls='ls --color=auto'
 fi
-
-
 
