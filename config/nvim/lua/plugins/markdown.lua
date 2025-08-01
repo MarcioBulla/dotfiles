@@ -8,12 +8,17 @@ return {
 			"folke/snacks.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
-    opts = {browser = "brave"},
+		opts = { browser = "brave" },
 	},
 	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		opts = {},
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+
+		priority = 49,
+
+		dependencies = {
+			"saghen/blink.cmp",
+		},
 	},
 	{
 		"iamcco/markdown-preview.nvim",
