@@ -1,14 +1,14 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
+		version = "*",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
-    lazy = false,
+		lazy = false,
 		config = function()
 			require("telescope").setup({
 				extensions = {
@@ -35,17 +35,10 @@ return {
 			end, { desc = "Find all files" })
 			keymap("n", "<leader>fh", telescope.help_tags, { desc = "Find help" })
 			keymap("n", "<leader>fk", telescope.keymaps, { desc = "Find keymaps" })
+			keymap("n", "<leader>fn", "<cmd>Noice telescope<CR>", { desc = "Noice telescope" })
 			keymap("n", "<leader>fo", telescope.oldfiles, { desc = "Find history" })
 			keymap("n", "<leader>fr", telescope.registers, { desc = "Find registers" })
-			keymap("n", "<leader>fW", function()
-				telescope.live_grep({
-					additional_args = function(args)
-						return vim.list_extend(args, { "--hidden", "--no-ignore" })
-					end,
-				})
-			end, { desc = "Find words in all files" })
 			keymap("n", "<leader>fw", telescope.live_grep, { desc = "Find words" })
-
 			-- LSP
 			keymap("n", "<leader>ls", telescope.lsp_document_symbols, { desc = "Document Symbols" })
 

@@ -26,13 +26,26 @@ return {
 			documentation = { auto_show = false },
 		},
 		sources = {
-			default = { "lsp", "path", "buffer", "codeium" },
+			default = { "lsp", "path", "buffer", "snippets", "codeium" },
+
 			providers = {
+				lsp = {
+					score_offset = 40,
+				},
+				path = {
+					score_offset = 30,
+				},
+				buffer = {
+					score_offset = 20,
+				},
+				snippets = {
+					score_offset = 10,
+				},
 				codeium = {
 					name = "Codeium",
 					module = "codeium.blink",
 					async = true,
-					score_offset = 100,
+					score_offset = 0,
 				},
 			},
 		},
