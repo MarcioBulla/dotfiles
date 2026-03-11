@@ -1,19 +1,12 @@
 return {
-  "williamboman/mason.nvim",
-lazy = false,
-  config = function()
-    -- import mason
-    local mason = require("mason")
-
-    -- enable mason and configure icons
-    mason.setup({
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
-        },
-      },
-    })
-  end,
+    "mason-org/mason.nvim",
+    opts = {
+        ui = {
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+            }
+        }
+    }
 }

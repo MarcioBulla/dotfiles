@@ -1,32 +1,14 @@
 return {
-	{
-		"brianhuster/live-preview.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			"ibhagwan/fzf-lua",
-			"echasnovski/mini.pick",
-			"folke/snacks.nvim",
-			"nvim-telescope/telescope-ui-select.nvim",
-		},
-		opts = { browser = "brave" },
+	"brianhuster/live-preview.nvim",
+	dependencies = {
+		"nvim-telescope/telescope.nvim",
+		{ "nvim-telescope/telescope-ui-select.nvim", lazy = false }, -- makes vim.ui.select available early
+		"ibhagwan/fzf-lua",
+		"echasnovski/mini.pick",
+		"folke/snacks.nvim",
 	},
-	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
-
-		priority = 49,
-
-		dependencies = {
-			"saghen/blink.cmp",
-		},
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && yarn install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
+	opts = {
+		browser = "brave",
+		picker = "telescope",
 	},
 }

@@ -2,28 +2,26 @@ return {
 	"rmagatti/auto-session",
 	lazy = false,
 	keys = {
-		{ "<leader>Sr", "<cmd>SessionSearch<CR>", desc = "Session search" },
-		{ "<leader>Ss", "<cmd>SessionSave<CR>", desc = "Save session" },
-		{ "<leader>Sa", "<cmd>SessionToggleAutoSave<CR>", desc = "Toggle autosave" },
+		{ "<leader>Sr", "<cmd>AutoSession search<CR>", desc = "Session search" },
+		{ "<leader>Ss", "<cmd>AutoSession save<CR>", desc = "Save session" },
+		{ "<leader>Sa", "<cmd>AutoSession toggle<CR>", desc = "Toggle autosave" },
 		{ "<leader>S", desc = "Auto Session" },
 	},
 	opts = {
-		auto_restore_enabled = false,
-		auto_session_enable_last_session = false,
-		pre_save_cmds = {
-			"Neotree close",
-		},
+		auto_restore = false,
+		auto_restore_last_session = false,
+		pre_save_cmds = { "Neotree close" },
 		session_lens = {
 			load_on_setup = true,
-			previewer = false,
 			mappings = {
-				delete_session = { "i", "<C-D>" },
 				alternate_session = { "i", "<C-S>" },
 				copy_session = { "i", "<C-Y>" },
+				delete_session = { "i", "<C-D>" },
 			},
-			theme_conf = {
+			picker_opts = {
 				border = true,
 			},
+			previewer = false,
 		},
 	},
 }

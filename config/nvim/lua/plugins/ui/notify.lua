@@ -1,16 +1,18 @@
 return {
-	"rcarriga/nvim-notify",
-	config = function()
-		require("notify").setup({
-			render = "compact",
-			background_colour = "#000000",
-			stages = "slide",
-			timeout = 2000,
-			top_down = false,
-		})
+  "rcarriga/nvim-notify",
+  event = "VeryLazy",
+  config = function()
+    vim.opt.termguicolors = true
 
-		vim.keymap.set("n", "<leader>fn", function()
-			require("telescope").extensions.notify.notify()
-		end, { desc = "Find Notify" })
-	end,
+    local notify = require("notify")
+
+    notify.setup({
+      timeout = 3000,
+      render = "default",
+      stages = "fade",
+      top_down = true,
+    })
+
+    vim.notify = notify
+  end,
 }

@@ -20,6 +20,9 @@ vim.opt.termguicolors = true
 -- Use system clipboard
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
+-- Auto-sesions
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- Set tab and indentation settings per file type
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",

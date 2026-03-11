@@ -1,13 +1,17 @@
 return {
-	"linux-cultist/venv-selector.nvim",
-	branch = "regexp",
-	dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
-	opts = {
-		search = false,
-		auto_refresh = true,
-	},
-	event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-	keys = {
-		{ "<leader>pV", "<cmd>VenvSelect<cr>" },
-	},
+  "linux-cultist/venv-selector.nvim",
+  dependencies = {
+    "mfussenegger/nvim-dap",
+    "mfussenegger/nvim-dap-python",
+    { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+  },
+  lazy = false,
+  event = "VeryLazy",
+  keys = {
+    { "<leader>ps", "<cmd>VenvSelect<cr>" },
+    { "<leader>pc", "<cmd>VenvSelectCached<cr>" },
+  },
+  opts = {
+    name = { ".venv" },
+  },
 }

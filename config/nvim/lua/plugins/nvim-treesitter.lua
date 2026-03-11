@@ -1,38 +1,36 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		local treesitter = require("nvim-treesitter.configs")
+  "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  build = ":TSUpdate",
+  config = function()
+    local ts = require("nvim-treesitter")
 
-		treesitter.setup({
-			auto_install = true,
-			highlight = { enable = true },
-			indent = { enable = true },
-			additional_vim_regex_highlighting = true,
+    ts.setup({
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
 
-			ensure_installed = {
-				"python",
-				"json",
-				"yaml",
-				"lua",
-				"gitignore",
-				"markdown",
-				"markdown_inline",
-				"bash",
-				"c",
-				"vim",
-			},
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "*" },
+      callback = function(args)
+        local ft = vim.bo[args.buf].filetype
+        local lang = vim.treesitter.language.get_lang(ft)
 
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
-				},
-			},
-		})
-	end,
+        if not lang then
+          return
+        end
+
+        if not vim.treesitter.language.add(lang) then
+          local available = require("nvim-treesitter").get_available()
+
+          if vim.tbl_contains(available, lang) then
+            require("nvim-treesitter").install(lang)
+          end
+        end
+
+        if vim.treesitter.language.add(lang) then
+          vim.treesitter.start(args.buf, lang)
+        end
+      end,
+    })
+  end,
 }
