@@ -20,13 +20,11 @@ return {
 			{ "<leader>z", group = "Zig", icon = "" },
 			{ "<leader>e", group = "Toggle NeoTree", icon = "" },
 			{ "<leader>o", group = "Focus NeoTree", icon = "" },
-			{ "<leader>/", group = "Toggle comment line", icon = "" },
-			{ "<leader>/", group = "Toggle comment for selection", icon = "", mode = "v" },
 			{ "<leader>l", group = "LSP", icon = "", mode = { "n", "v" } },
 			{ "<leader>S", group = "Auto Session", icon = "" },
 			{ "<leader>O", group = "Obsidian", icon = "" },
 			{ "<leader>R", group = "ESP IDF", icon = "" },
 		})
 	end,
-	opt = { icons = { mappings = false } },
+	opts = { icons = { mappings = true } },
 }
