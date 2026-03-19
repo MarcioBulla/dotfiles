@@ -128,10 +128,6 @@ zinit wait"1a" lucid has"eza" for \
 zinit wait"1b" lucid has"fzf" for \
     lincheney/fzf-tab-completion
 
-# Python tools - carregamento tardio para não impactar startup
-zinit wait"2a" lucid has"python3" for \
-    darvid/zsh-poetry
-
 zinit wait"2b" lucid has"virtualenvwrapper.sh" nocd for \
     python-virtualenvwrapper/virtualenvwrapper
 
@@ -155,9 +151,6 @@ get_idf() {
 }
 
 alias to_clipboard="xclip -selection clipboard"
-alias freecad="env -u WAYLAND_DISPLAY freecad"
-alias FreeCAD="env -u WAYLAND_DISPLAY freecad"
-alias mmdc="npx -p @mermaid-js/mermaid-cli mmdc"
 
 
 if command -v eza >/dev/null; then

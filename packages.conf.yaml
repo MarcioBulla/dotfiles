@@ -1,14 +1,12 @@
 ---
 - pacman:
     - archlinux-xdg-menu
-    - arduino-cli
-    - arduino-language-server
     - ark
+    - bat
     - bluez
     - bluez-utils
     - brightnessctl
     - btop
-    - clang
     - cliphist
     - dolphin
     - dolphin-plugins
@@ -35,17 +33,15 @@
     - hyprpolkitagent
     - imagemagick
     - inkscape
-    - ipython
+    - kde-cli-tools
     - keepassxc
     - kicad
     - kicad-library
     - kicad-library-3d
     - kio-admin
-    - kde-cli-tools
     - kitty
     - libreoffice-still
     - man-db
-    - mpv
     - mpv
     - mtools
     - neovim
@@ -54,8 +50,9 @@
     - noto-fonts-emoji
     - numbat
     - nwg-look
-    - openocd
+    - okular
     - pamixer
+    - pdfslicer
     - pipewire-alsa
     - pipewire-audio
     - pipewire-jack
@@ -63,7 +60,6 @@
     - platformio-core
     - polkit-kde-agent
     - python-neovim
-    - python-pipx
     - python-virtualenvwrapper
     - qt5-wayland
     - qt6-wayland
@@ -71,21 +67,23 @@
     - starship
     - swaync
     - syncthing
-    - tree-sitter-cli
     - ttf-jetbrains-mono-nerd
     - ttf-opensans
     - unzip
     - uv
+    - uwsm
+    - vim
+    - vlc
     - waybar
     - wget
     - wireplumber
     - wl-clipboard
-    - xclip
+    - xdg-desktop-portal
     - xdg-desktop-portal-gtk
     - xdg-desktop-portal-hyprland
     - xdg-user-dirs
     - xdg-user-dirs-gtk
-    - yt-dlp
+    - xdg-utils
     - zig
     - zip
     - zoxide
@@ -104,10 +102,7 @@
     - qt6ct-kde
     - qview
     - sddm-git
-    - superfile
     - syncthingtray
-    - teams
     - volantes-cursors-git
-    - webcord
     - where-is-my-sddm-theme
     - wlogout-git
