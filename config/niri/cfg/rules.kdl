@@ -1,0 +1,14 @@
+    window-rule {
+        geometry-corner-radius 20 // Set every window radius to 20
+        clip-to-geometry true
+    }
+window-rule {
+        match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+        match title=r#"^(\(\d+\)\s)?WhatsApp( Web)?(?:\s+[—-]\s+.*)?$"#
+        block-out-from "screencast"
+    }
+
+    layer-rule {
+        match namespace="^noctalia-wallpaper*"
+        place-within-backdrop true
+    }
