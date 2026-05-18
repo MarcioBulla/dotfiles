@@ -9,18 +9,19 @@ binds {
     Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
 
     // ─── Applications ───
-    Mod+Return                          hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
-    Mod+Shift+Return                    hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+N                               hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
-    Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-    Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-    Mod+P                               hotkey-overlay-title="Open KeepassXC" {spawn "keepassxc"; }
-    Mod+B                               hotkey-overlay-title="Clipboard History: noctalia" {spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"
-}
+    Mod+Return          repeat=false    hotkey-overlay-title="Open Terminal: kitty" { spawn "kitty"; }
+    Mod+Shift+Return    repeat=false    hotkey-overlay-title="Open float Terminal: kitty" {spawn "kitty" "--class" "float-kitty";}
+    Mod+R               repeat=false    hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+N               repeat=false    hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
+    Mod+ALT+L           repeat=false    hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Mod+Shift+W         repeat=false    hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+P               repeat=false    hotkey-overlay-title="Open KeepassXC" {spawn "keepassxc"; }
+    Mod+B               repeat=false    hotkey-overlay-title="Clipboard History: noctalia" {spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    XF86Calculator      repeat=false    hotkey-overlay-title="Open Numbat Calculator" { spawn "kitty" "-o" "font_size=20" "-e" "numbat"; }
 
     // Please choose your own file manager.
-    Mod+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
-
+    Mod+E               repeat=false    hotkey-overlay-title="File Manager: Dolphin" { spawn "dolphin"; }
+    Mod+Shift+E         repeat=false    hotkey-overlay-title="Archive Manager: Ark" { spawn "ark"; }
     // ─── Media Controls ───
     XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
     XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
@@ -36,7 +37,7 @@ binds {
     XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
 
     // ─── Window Movement and Focus ───
-    Mod+Q                               { close-window; }
+    Mod+W                               { close-window; }
 
     Mod+H                               { focus-column-left; }
     Mod+L                               { focus-column-right; }
@@ -67,6 +68,8 @@ binds {
     Mod+Shift+UP                        { move-column-to-workspace-up; }
     Mod+Shift+Down                      { move-column-to-workspace-down; }
 
+    Mod+BracketLeft                     { consume-or-expel-window-left; }
+    Mod+BracketRight                    { consume-or-expel-window-right; }
 
     // ─── Workspace Switching ───
     Mod+WheelScrollDown                 cooldown-ms=150 { focus-workspace-down; }
@@ -107,7 +110,7 @@ binds {
     Mod+TAB                             { focus-workspace-previous; }
 
     // ─── Layout Controls ───
-    Mod+F                               { expand-column-to-available-width; }
+    Mod+F                               { maximize-column; }
     Mod+C                               { center-column; }
     Mod+CTRL+C                          { center-visible-columns; }
     Mod+Minus                           { set-column-width "-10%"; }
@@ -116,14 +119,20 @@ binds {
     Mod+Shift+KP_Add                    { set-window-height "+10%"; }
 
     // ─── Modes ───
-    Mod+T                               { toggle-window-floating; }
+    Mod+Alt+F                           { toggle-window-floating; }
     Mod+Shift+F                         { fullscreen-window; }
-    Mod+W                               { toggle-column-tabbed-display; }
+    Mod+Q                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
-    Print                               { screenshot-screen; }
-    MOD+Print                           { screenshot-window; }
-    Shift+Print                         { screenshot; }
+
+    Print             repeat=false      { screenshot-screen write-to-disk=true; }
+    CTRL+Print        repeat=false      { screenshot-screen; }
+
+    MOD+Print         repeat=false      { screenshot-window write-to-disk=true; }
+    CTRL+MOD+Print    repeat=false      { screenshot-window; }
+
+    Shift+Print       repeat=false      { screenshot; }
+    CTRL+Shift+Print  repeat=false      { screenshot; }
 
     // ─── Emergency Escape Key ───
     Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }

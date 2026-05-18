@@ -14,8 +14,6 @@ return {
 				stages = "fade_in_slide_out",
 				top_down = false,
 			})
-
-			vim.notify = notify
 		end,
 	},
 	{
@@ -25,13 +23,6 @@ return {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 			"nvim-telescope/telescope.nvim",
-		},
-		keys = {
-			{
-				"<leader>fn",
-				"<cmd>Noice telescope<CR>",
-				desc = "Noice telescope",
-			},
 		},
 		opts = {
 			cmdline = {

@@ -35,9 +35,17 @@ return {
 		-- keymap
 
 		local keymap = vim.keymap
+		local Terminal = require("toggleterm.terminal").Terminal
 
 		local terminals = {}
 		local term_count = 0
+		local idf_initialized = false
+		local idf_term = Terminal:new({
+			direction = "float",
+			display_name = "ESP-IDF",
+			close_on_exit = false,
+			hidden = false,
+		})
 
 		-- Function to generate automatic terminal name
 		local function generate_terminal_name(direction)
@@ -113,6 +121,37 @@ return {
 			end
 		end
 
+		local function shellescape(cmd)
+			return vim.fn.shellescape(cmd)
+		end
+
+		local function get_project_root()
+			return vim.loop.cwd()
+		end
+
+		local function send_to_idf_terminal(command)
+			local root = get_project_root()
+			local commands = {
+				"cd " .. shellescape(root),
+			}
+
+			if not idf_initialized then
+				table.insert(commands, "get_idf")
+				idf_initialized = true
+			end
+
+			if command and command ~= "" then
+				table.insert(commands, command)
+			end
+
+			idf_term:open()
+			idf_term:send(table.concat(commands, "\n"), false)
+		end
+
+		local function idf(command)
+			send_to_idf_terminal(command)
+		end
+
 		keymap.set("n", "<leader>ta", "<cmd>ToggleTermToggleAll<cr>", { desc = "Show/Hide All ToggleTerms" })
 		keymap.set("n", "<leader>tN", "<cmd>ToggleTermSetName<cr>", { desc = "Set ToggleTerm name" })
 		keymap.set("n", "<leader>ts", "<cmd>TermSelect<cr>", { desc = "Select ToggleTerm" })
@@ -129,6 +168,43 @@ return {
 		keymap.set("n", "<leader>tt", function()
 			toggle_term("tab")
 		end, { desc = "ToggleTerm tab split" })
+
+		keymap.set("n", "<leader>Ei", function()
+			idf("")
+		end, { desc = "ESP-IDF init terminal" })
+		keymap.set("n", "<leader>Eb", function()
+			idf("idf.py build")
+		end, { desc = "ESP-IDF build" })
+		keymap.set("n", "<leader>Ef", function()
+			idf("idf.py flash")
+		end, { desc = "ESP-IDF flash" })
+		keymap.set("n", "<leader>Em", function()
+			idf("idf.py monitor")
+		end, { desc = "ESP-IDF monitor" })
+		keymap.set("n", "<leader>Er", function()
+			idf("idf.py reconfigure")
+		end, { desc = "ESP-IDF reconfigure" })
+		keymap.set("n", "<leader>Ec", function()
+			idf("idf.py fullclean")
+		end, { desc = "ESP-IDF fullclean" })
+		keymap.set("n", "<leader>Es", function()
+			vim.ui.input({ prompt = "ESP target: " }, function(target)
+				if not target or target == "" then
+					return
+				end
+
+				idf("idf.py set-target " .. target)
+			end)
+		end, { desc = "ESP-IDF set target" })
+		keymap.set("n", "<leader>EE", function()
+			vim.ui.input({ prompt = "ESP-IDF command: ", default = "idf.py " }, function(command)
+				if not command or command == "" then
+					return
+				end
+
+				idf(command)
+			end)
+		end, { desc = "ESP-IDF custom command" })
 
 		keymap.set("t", "<esc>", [[<C-\><C-n>]], { desc = "Back to normal mode" })
 
@@ -165,51 +241,5 @@ return {
 		keymap.set("n", "<leader>pv", function()
 			python("vertical", 60)
 		end, { desc = "Run Python Vertical" })
-
-		-- Zig
-		local function zig(action, direction, size)
-			vim.cmd("w")
-
-			local current_file = vim.fn.expand("%:p")
-
-			if vim.fn.filereadable(current_file) == 0 then
-				vim.notify("File not found!", vim.log.levels.ERROR)
-				return
-			end
-
-			local cmd
-			if action == "build" or current_file == nil or current_file == "" then
-				cmd = ("zig %s"):format(action)
-			else
-				cmd = ('zig %s "%s"'):format(action, current_file)
-			end
-			local term_name = string.format("Zig-%s", action)
-
-			local command = string.format(
-				"TermExec name=%s direction=%s size=%s close_on_exit=true cmd='%s'",
-				term_name,
-				direction,
-				size and size or "",
-				cmd
-			)
-
-			vim.cmd(command)
-		end
-
-		keymap.set("n", "<leader>zr", function()
-			zig("run", "float")
-		end, { desc = "Run Zig Float" })
-		keymap.set("n", "<leader>zb", function()
-			zig("build", "float")
-		end, { desc = "Build Zig Float" })
-		keymap.set("n", "<leader>zt", function()
-			zig("test", "float")
-		end, { desc = "Test Zig Float" })
-		keymap.set("n", "<leader>zh", function()
-			zig("build", "horizontal")
-		end, { desc = "Build Zig Horizontal" })
-		keymap.set("n", "<leader>zv", function()
-			zig("build", "vertical", 60)
-		end, { desc = "Build Zig Vertical" })
 	end,
 }

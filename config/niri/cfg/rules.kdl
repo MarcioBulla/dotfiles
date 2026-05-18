@@ -2,10 +2,15 @@
         geometry-corner-radius 20 // Set every window radius to 20
         clip-to-geometry true
     }
-window-rule {
+    window-rule {
         match app-id=r#"^org\.keepassxc\.KeePassXC$"#
         match title=r#"^(\(\d+\)\s)?WhatsApp( Web)?(?:\s+[—-]\s+.*)?$"#
         block-out-from "screencast"
+    }
+    window-rule {
+        match app-id="^float-kitty$"
+        match app-id="^JUPYTER NOTEBOOK VIEWER$"
+        open-floating true
     }
 
     layer-rule {

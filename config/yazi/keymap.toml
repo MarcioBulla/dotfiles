@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on = [ ",", "l" ]
+run = 'shell --orphan -- "$HOME/.local/bin/yazi-localsend" %s --hovered %h'
+desc = "Enviar com LocalSend"

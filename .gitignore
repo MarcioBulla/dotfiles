@@ -1,0 +1,22 @@
+# Local/generated state
+*.log
+*.db
+*.db-shm
+*.db-wal
+*.zwc
+.DS_Store
+
+# Secrets and session state that should never be versioned
+*cookie*
+*token*
+*secret*
+*password*
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Editor/runtime caches
+config/nvim/.netrwhist
+config/nvim/plugin/packer_compiled.lua
+config/btop/btop.log

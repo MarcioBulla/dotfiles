@@ -4,15 +4,15 @@
 input {
     keyboard {
         xkb {
-            //If you want to overwrite your keyboard layout,
-            // uncomment the line below and change the layout accordingly.
-            //layout "us" // Use the American keyboard layout
+            layout "us" // Use the American keyboard layout
+            variant "intl"
         }
         numlock // Enable numlock on startup
     }
 
     touchpad {
         tap // Enable tap-to-click
+        dwt // disable while typing
         natural-scroll // Enable natural (macOS-style) scrolling
     }
 
@@ -23,6 +23,6 @@ input {
         //accel-speed 0.0
     }
 
-    focus-follows-mouse // Automatically focus windows under the mouse pointer
+    focus-follows-mouse max-scroll-amount="0%"// Automatically focus windows under the mouse pointer
     workspace-auto-back-and-forth // Enable workspace back & forth switching
 }
