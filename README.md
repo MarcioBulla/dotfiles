@@ -59,6 +59,8 @@ The original files live in this repository. The system paths become symlinks tha
 ~/.config/nvim       -> ~/.dotfiles/config/nvim
 ~/.config/kitty      -> ~/.dotfiles/config/kitty
 ~/.config/niri       -> ~/.dotfiles/config/niri
+~/.config/systemd    -> ~/.dotfiles/config/systemd
+~/.config/voxtype    -> ~/.dotfiles/config/voxtype
 ~/.local/share/kio   -> ~/.dotfiles/local/share/kio
 ```
 

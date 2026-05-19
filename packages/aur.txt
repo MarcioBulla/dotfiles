@@ -2,3 +2,4 @@ eh-vial-appimage
 python-pywalfox
 qt5ct-kde
 qt6ct-kde
+voxtype

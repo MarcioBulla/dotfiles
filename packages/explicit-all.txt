@@ -210,6 +210,7 @@ usbutils
 uv
 vim
 vlc-plugins-all
+voxtype
 vpl-gpu-rt
 vulkan-icd-loader
 vulkan-intel

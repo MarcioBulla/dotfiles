@@ -17,6 +17,7 @@ binds {
     Mod+Shift+W         repeat=false    hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+P               repeat=false    hotkey-overlay-title="Open KeepassXC" {spawn "keepassxc"; }
     Mod+B               repeat=false    hotkey-overlay-title="Clipboard History: noctalia" {spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    Mod+Z               repeat=false    hotkey-overlay-title="Voxtype Record Toggle" { spawn "voxtype" "record" "toggle"; }
     XF86Calculator      repeat=false    hotkey-overlay-title="Open Numbat Calculator" { spawn "kitty" "-o" "font_size=20" "-e" "numbat"; }
 
     // Please choose your own file manager.
