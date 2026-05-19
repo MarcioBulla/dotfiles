@@ -810,9 +810,9 @@
                 "darkMode": true,
                 "generationMethod": "tonal-spot",
                 "paletteColors": [
-                    "#eeb0ff",
-                    "#d5c0d7",
-                    "#f5b7b3",
+                    "#bec2ff",
+                    "#c5c4dd",
+                    "#e7b9d5",
                     "#ffb4ab"
                 ],
                 "path": "/home/marcio/Pictures/Wallpapers/tux_PC.png",

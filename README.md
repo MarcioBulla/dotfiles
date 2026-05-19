@@ -56,11 +56,27 @@ The original files live in this repository. The system paths become symlinks tha
 
 ```text
 ~/.zshrc             -> ~/.dotfiles/config/zshrc
-~/.config/nvim       -> ~/.dotfiles/config/nvim
+~/.config/btop       -> ~/.dotfiles/config/btop
+~/.config/fastfetch  -> ~/.dotfiles/config/fastfetch
+~/.config/gtk-3.0    -> ~/.dotfiles/config/gtk-3.0
+~/.config/gtk-4.0    -> ~/.dotfiles/config/gtk-4.0
+~/.config/kde.org    -> ~/.dotfiles/config/kde.org
 ~/.config/kitty      -> ~/.dotfiles/config/kitty
+~/.config/marimo     -> ~/.dotfiles/config/marimo
+~/.config/micro      -> ~/.dotfiles/config/micro
 ~/.config/niri       -> ~/.dotfiles/config/niri
+~/.config/noctalia   -> ~/.dotfiles/config/noctalia
+~/.config/nvim       -> ~/.dotfiles/config/nvim
+~/.config/nwg-look   -> ~/.dotfiles/config/nwg-look
+~/.config/qt5ct      -> ~/.dotfiles/config/qt5ct
+~/.config/qt6ct      -> ~/.dotfiles/config/qt6ct
+~/.config/starship.toml -> ~/.dotfiles/config/starship.toml
 ~/.config/systemd    -> ~/.dotfiles/config/systemd
 ~/.config/voxtype    -> ~/.dotfiles/config/voxtype
+~/.config/xdg-desktop-portal -> ~/.dotfiles/config/xdg-desktop-portal
+~/.config/xsettingsd -> ~/.dotfiles/config/xsettingsd
+~/.config/yazi       -> ~/.dotfiles/config/yazi
+~/.config/zathura    -> ~/.dotfiles/config/zathura
 ~/.local/share/kio   -> ~/.dotfiles/local/share/kio
 ```
 
@@ -84,6 +100,15 @@ packages/explicit-all.txt    all explicit packages, for reference
 ```
 
 The installer does not use `packages/explicit-all.txt` directly; I keep it only as a reference.
+
+## System inventory
+
+These files are references for enabled units on the current system:
+
+```text
+system/enabled-system-units.txt
+system/enabled-user-units.txt
+```
 
 ## SDDM
 

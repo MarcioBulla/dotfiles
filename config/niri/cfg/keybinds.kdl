@@ -22,7 +22,7 @@ binds {
 
     // Please choose your own file manager.
     Mod+E               repeat=false    hotkey-overlay-title="File Manager: Dolphin" { spawn "dolphin"; }
-    Mod+Shift+E         repeat=false    hotkey-overlay-title="Archive Manager: Ark" { spawn "ark"; }
+    Mod+Shift+E         repeat=false    hotkey-overlay-title="File Manager: Yazi" { spawn "kitty" "-e" "yazi"; }
     // ─── Media Controls ───
     XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
     XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }

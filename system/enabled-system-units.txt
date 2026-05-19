@@ -1,9 +1,9 @@
-UNIT FILE                          STATE   PRESET
 cachyos-iw-set-regdomain.path      enabled disabled
 ananicy-cpp.service                enabled disabled
 avahi-daemon.service               enabled disabled
 bluetooth.service                  enabled disabled
 getty@.service                     enabled enabled
+languagetool.service               enabled disabled
 limine-snapper-sync.service        enabled disabled
 mullvad-daemon.service             enabled disabled
 NetworkManager-dispatcher.service  enabled disabled
@@ -24,5 +24,3 @@ remote-fs.target                   enabled enabled
 cachyos-rate-mirrors.timer         enabled disabled
 fstrim.timer                       enabled disabled
 snapper-cleanup.timer              enabled disabled
-
-25 unit files listed.

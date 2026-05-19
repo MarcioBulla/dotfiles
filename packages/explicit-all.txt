@@ -94,6 +94,7 @@ kicad
 kicad-library
 kicad-library-3d
 kitty
+languagetool
 less
 lib32-nvidia-utils
 lib32-opencl-nvidia
@@ -186,6 +187,7 @@ slurp
 smartmontools
 snapper
 sof-firmware
+steam
 sudo
 switcheroo-control
 syncthing
