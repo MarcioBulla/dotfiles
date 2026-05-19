@@ -1,3 +1,4 @@
+7zip
 accountsservice
 alsa-firmware
 alsa-plugins
@@ -54,6 +55,7 @@ efitools
 egl-wayland
 ethtool
 exfatprogs
+eza
 f2fs-tools
 fastfetch
 ffmpegthumbnailer
@@ -219,3 +221,5 @@ xl2tpd
 yazi
 zathura
 zig
+zip
+zoxide

@@ -1,79 +1,119 @@
 # dotfiles
 
-Dotfiles for my current CachyOS/Arch system.
+Dotfiles for my CachyOS/Arch setup.
 
-## Default Location
+The purpose of this repository is to apply this dotfile set to a system. It installs the saved package list, applies system helpers, installs the SDDM theme, and then links the tracked config files into their target locations.
 
-This repo is expected to live at:
+`gitconfig` is intentionally not managed here.
+
+## Location
+
+The installer expects this repository at:
 
 ```sh
 ~/.dotfiles
 ```
 
-Clone it directly there with:
+Clone it there:
 
 ```sh
 git clone https://github.com/<your-github-user>/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-## Restore Packages
+To run from another path:
 
 ```sh
-sudo pacman -S --needed - < packages/pacman-native.txt
-paru -S --needed - < packages/aur.txt
+ALLOW_NONSTANDARD_DOTFILES=1 ./install.sh
 ```
 
-## Apply Dotfiles
+## Apply
 
-No Dotbot on `main`. The installer creates symlinks for `~/.zshrc`, `~/.gitconfig`, and `~/.config/*`.
-`~/.zshrc` points to `config/zshrc`.
-The repo is expected to be in `~/.dotfiles`, so the links look like this:
-
-```text
-~/.zshrc             -> ~/.dotfiles/config/zshrc
-~/.gitconfig         -> ~/.dotfiles/gitconfig
-~/.config/nvim       -> ~/.dotfiles/config/nvim
-~/.config/kitty      -> ~/.dotfiles/config/kitty
-~/.config/niri       -> ~/.dotfiles/config/niri
-~/.local/share/...   -> ~/.dotfiles/local/share/...
-```
-
-Existing files are moved to `~/.dotfiles-backup/` before links are created.
-The installer also unblocks Bluetooth with `rfkill` when available and enables `bluetooth.service`.
-It also opens the default LocalSend port, `53317/tcp` and `53317/udp`, with `ufw` or `firewall-cmd` when available.
+Run:
 
 ```sh
 ./install.sh
 ```
 
-`install.sh` is only an orchestrator. The actual steps live in:
+The installer runs these steps in order:
+
+1. `scripts/ensure-standard-location.sh`
+   Checks that the repo is located at `~/.dotfiles`, unless `ALLOW_NONSTANDARD_DOTFILES=1` is set.
+2. `scripts/install-packages.sh`
+   Installs packages from `packages/pacman-native.txt` with `pacman`, then installs AUR/foreign packages from `packages/aur.txt` with `paru` or `yay`.
+3. `scripts/setup-bluetooth.sh`
+   Unblocks Bluetooth when `rfkill` is available and enables `bluetooth.service`.
+4. `scripts/setup-localsend-firewall.sh`
+   Opens LocalSend port `53317/tcp` and `53317/udp` with `ufw` or `firewall-cmd`, when available.
+5. `scripts/install-sddm-theme.sh`
+   Installs the SDDM theme and applies the SDDM config files.
+6. `scripts/install-symlinks.sh`
+   Backs up existing target configs and creates symlinks from the system config locations to this repo.
+
+## Symlinks
+
+The original files live in this repository. The system paths become symlinks to them:
 
 ```text
-scripts/ensure-standard-location.sh
-scripts/install-symlinks.sh
-scripts/setup-bluetooth.sh
-scripts/setup-localsend-firewall.sh
-scripts/install-sddm-theme.sh
+~/.zshrc             -> ~/.dotfiles/config/zshrc
+~/.config/nvim       -> ~/.dotfiles/config/nvim
+~/.config/kitty      -> ~/.dotfiles/config/kitty
+~/.config/niri       -> ~/.dotfiles/config/niri
+~/.local/share/kio   -> ~/.dotfiles/local/share/kio
 ```
 
-The SDDM step installs the `where_is_my_sddm_theme` theme automatically, cloning it from:
+In this section, `->` means the system path is a symlink pointing to the repo path. This applies to both `~/.config` entries and `~/.local/share` entries.
+
+Before replacing existing target files, `scripts/install-symlinks.sh` creates:
+
+```text
+~/.dotfiles-backup/<timestamp>/old-configs.zip
+~/.dotfiles-backup/<timestamp>/<original-path>
+```
+
+## Packages
+
+Package lists:
+
+```text
+packages/pacman-native.txt   explicit packages from official repositories
+packages/aur.txt             explicit AUR/foreign packages
+packages/explicit-all.txt    all explicit packages, for reference
+```
+
+`packages/explicit-all.txt` is not installed directly by the installer.
+
+## SDDM
+
+The SDDM step installs `where_is_my_sddm_theme` from:
 
 ```sh
 https://github.com/stepanzubkov/where-is-my-sddm-theme.git
 ```
 
-It applies `sddm.conf` and `sddm-theme.conf`, keeping a black background without copying any wallpaper.
-To skip the SDDM step:
+It copies these repo files into system locations. These are regular file copies, not symlinks:
+
+```text
+sddm.conf       -> copy to -> /etc/sddm.conf
+sddm-theme.conf -> copy to -> /usr/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+```
+
+## Options
+
+Skip package installation:
+
+```sh
+SKIP_PACKAGES=1 ./install.sh
+```
+
+Skip SDDM setup:
 
 ```sh
 SKIP_SDDM=1 ./install.sh
 ```
 
-## Notes
+Use both when needed:
 
-- `packages/pacman-native.txt`: only explicitly installed packages from official repositories, without automatic dependencies.
-- `packages/aur.txt`: only explicitly installed AUR/external packages, without automatic dependencies.
-- `packages/explicit-all.txt`: full explicit package list, also without automatic dependencies.
-- `local/share/kio/servicemenus/localsend.desktop`: Dolphin/KDE context menu for LocalSend.
-- API keys, cookies, local databases, and logs should not be versioned.
+```sh
+SKIP_PACKAGES=1 SKIP_SDDM=1 ./install.sh
+```

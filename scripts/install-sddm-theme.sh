@@ -21,6 +21,9 @@ sudo rm -rf "$theme_dir"
 sudo cp -a "${tmp_dir}/${theme_name}" "$theme_dir"
 
 sudo install -Dm644 "${repo_dir}/sddm.conf" /etc/sddm.conf
+printf 'copy: %s -> %s\n' "${repo_dir}/sddm.conf" /etc/sddm.conf
+
 sudo install -Dm644 "${repo_dir}/sddm-theme.conf" "${theme_dir}/theme.conf"
+printf 'copy: %s -> %s\n' "${repo_dir}/sddm-theme.conf" "${theme_dir}/theme.conf"
 
 printf 'SDDM theme installed at %s\n' "$theme_dir"
