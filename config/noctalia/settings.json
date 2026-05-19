@@ -473,7 +473,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "",
+        "avatarImage": "/home/marcio/Pictures/My/IMG-20220513-WA0035.jpg",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
@@ -800,7 +800,7 @@
     },
     "wallpaper": {
         "automationEnabled": true,
-        "directory": "$HOME/Pictures/Wallpapers",
+        "directory": "/home/marcio/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
@@ -810,12 +810,12 @@
                 "darkMode": true,
                 "generationMethod": "tonal-spot",
                 "paletteColors": [
-                    "#bec2ff",
-                    "#c5c4dd",
-                    "#e7b9d5",
+                    "#eeb0ff",
+                    "#d5c0d7",
+                    "#f5b7b3",
                     "#ffb4ab"
                 ],
-                "path": "$HOME/Pictures/Wallpapers/tux_PC.png",
+                "path": "/home/marcio/Pictures/Wallpapers/tux_PC.png",
                 "useWallpaperColors": true
             },
             {
@@ -829,7 +829,7 @@
                     "#e5bad8",
                     "#ffb4ab"
                 ],
-                "path": "$HOME/Pictures/Wallpapers/legion_tiger.jpg",
+                "path": "/home/marcio/Pictures/Wallpapers/legion_tiger.jpg",
                 "useWallpaperColors": true
             },
             {
@@ -843,7 +843,7 @@
                     "#d5bee5",
                     "#ffb4ab"
                 ],
-                "path": "$HOME/Pictures/Wallpapers/Time.svg",
+                "path": "/home/marcio/Pictures/Wallpapers/Time.svg",
                 "useWallpaperColors": true
             }
         ],
@@ -853,12 +853,12 @@
         "linkLightAndDarkWallpapers": false,
         "monitorDirectories": [
             {
-                "directory": "$HOME/Pictures/Wallpapers",
+                "directory": "/home/marcio/Pictures/Wallpapers",
                 "name": "eDP-1",
                 "wallpaper": ""
             },
             {
-                "directory": "$HOME/Pictures/Wallpapers",
+                "directory": "/home/marcio/Pictures/Wallpapers",
                 "name": "DP-3",
                 "wallpaper": ""
             }
