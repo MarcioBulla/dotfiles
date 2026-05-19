@@ -169,6 +169,7 @@ python
 python-defusedxml
 python-packaging
 qt5-wayland
+qt6-5compat
 rebuild-detector
 reflector
 resvg
