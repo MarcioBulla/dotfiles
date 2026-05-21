@@ -1,12 +1,23 @@
 return {
 	"folke/which-key.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"echasnovski/mini.icons",
+		"nvim-tree/nvim-web-devicons",
+	},
 	init = function()
 		vim.o.timeout = true
 		vim.o.timeoutlen = 10
+	end,
+	opts = {
+		icons = { mappings = true },
+		filter = function(mapping)
+			return not (mapping.lhs == "gc" and mapping.desc == "Toggle comment")
+		end,
+	},
+	config = function(_, opts)
 		local wk = require("which-key")
 
-		wk.setup({})
+		wk.setup(opts)
 
 		wk.add({
 			{ "<leader>t", group = "ToggleTerms", icon = "" },
@@ -18,6 +29,7 @@ return {
 			{ "<leader>N", group = "Auto Docstring", icon = "󰅽" },
 			{ "<leader>h", group = "Help Code", icon = "󱜸" },
 			{ "<leader>p", group = "Python", icon = "" },
+			{ "<leader>pu", group = "uv", icon = "󰦖" },
 			{ "<leader>P", group = "PlatformIO", icon = "" },
 			{ "<leader>e", group = "Toggle NeoTree", icon = "" },
 			{ "<leader>o", group = "Focus NeoTree", icon = "" },
@@ -27,5 +39,4 @@ return {
 			{ "<leader>O", group = "Obsidian", icon = "" },
 		})
 	end,
-	opts = { icons = { mappings = true } },
 }

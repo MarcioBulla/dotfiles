@@ -1,29 +1,63 @@
 return {
 	"anurag3301/nvim-platformio.lua",
+	cmd = {
+		"Pioinit",
+		"PioLSP",
+		"Piorun",
+		"Piomon",
+		"Piolsserial",
+		"Piolib",
+		"Piocmdh",
+		"Piocmdf",
+		"Piodebug",
+		"PioTermList",
+	},
 	dependencies = {
 		"akinsho/nvim-toggleterm.lua",
 		"nvim-telescope/telescope.nvim",
 		"nvim-lua/plenary.nvim",
 	},
-	config = function()
-		-- keymaps
-
-		vim.keymap.set("n", "<leader>Pi", "<CMD>Pioinit<CR>", { desc = "Init Project" })
-		vim.keymap.set("n", "<leader>Pg", "<CMD>Piocmd run -t compiledb<CR>", { desc = "Gen Compiledb" })
-		vim.keymap.set("n", "<leader>Pu", "<CMD>Piorun upload<CR>", { desc = "Uploard" })
-		vim.keymap.set("n", "<leader>Pb", "<CMD>Piorun build<CR>", { desc = "Build" })
-		vim.keymap.set("n", "<leader>Pr", "<CMD>Piorun<CR>", { desc = "Build and Upload" })
-		vim.keymap.set("n", "<leader>Pc", "<CMD>Piorun clean<CR>", { desc = "Clean" })
-		vim.keymap.set("n", "<leader>Pm", "<CMD>Piomon<CR>", { desc = "Monitor" })
-		vim.keymap.set("n", "<leader>Pd", "<CMD>Piodebug<CR>", { desc = "Debug" })
-		vim.keymap.set("n", "<leader>PM", function()
-			_G.execute_command("Piomon", "Baudrate: ", true)
-		end, { desc = "Custom Baudrate Monitor" })
-		vim.keymap.set("n", "<leader>Pl", function()
-			_G.execute_command("Piolib", "Library Name: ", false)
-		end, { desc = "Install Library" })
-		vim.keymap.set("n", "<leader>PC", function()
-			_G.execute_command("Piocmd", "PlatformIO Command: ", false)
-		end, { desc = "PlatformIO commands" })
-	end,
+	keys = {
+		{ "<leader>Pi", "<CMD>Pioinit<CR>", desc = "Init Project" },
+		{ "<leader>Pg", "<CMD>Piocmdf run -t compiledb<CR>", desc = "Gen Compiledb" },
+		{ "<leader>Pu", "<CMD>Piorun upload<CR>", desc = "Upload" },
+		{ "<leader>Pb", "<CMD>Piorun build<CR>", desc = "Build" },
+		{ "<leader>Pr", "<CMD>Piorun<CR>", desc = "Build and Upload" },
+		{ "<leader>Pc", "<CMD>Piorun clean<CR>", desc = "Clean" },
+		{ "<leader>Pm", "<CMD>Piomon<CR>", desc = "Monitor" },
+		{ "<leader>Pd", "<CMD>Piodebug<CR>", desc = "Debug" },
+		{
+			"<leader>PM",
+			function()
+				vim.ui.input({ prompt = "Baudrate: " }, function(input)
+					if input and input ~= "" then
+						vim.cmd("Piomon " .. input)
+					end
+				end)
+			end,
+			desc = "Custom Baudrate Monitor",
+		},
+		{
+			"<leader>Pl",
+			function()
+				vim.ui.input({ prompt = "Library Name: " }, function(input)
+					if input and input ~= "" then
+						vim.cmd("Piolib " .. input)
+					end
+				end)
+			end,
+			desc = "Install Library",
+		},
+		{
+			"<leader>PC",
+			function()
+				vim.ui.input({ prompt = "PlatformIO Command: " }, function(input)
+					if input and input ~= "" then
+						vim.cmd("Piocmdf " .. input)
+					end
+				end)
+			end,
+			desc = "PlatformIO commands",
+		},
+	},
 }
