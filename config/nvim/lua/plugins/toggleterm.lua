@@ -39,7 +39,10 @@ return {
 
 		local terminals = {}
 		local term_count = 0
+		local idf_started = false
 		local idf_initialized = false
+		local idf_activate_script = nil
+		local idf_project_root = nil
 		local idf_term = Terminal:new({
 			direction = "float",
 			display_name = "ESP-IDF",
@@ -129,14 +132,105 @@ return {
 			return vim.loop.cwd()
 		end
 
-		local function send_to_idf_terminal(command)
+		local function find_idf_activate_scripts()
+			local tools_dir = vim.fn.expand("~/.espressif/tools")
+			local scripts = {}
+			local seen = {}
+
+			for _, pattern in ipairs({ "**/activate_idf*.sh", "**/activate-idf*.sh" }) do
+				for _, script in ipairs(vim.fn.globpath(tools_dir, pattern, false, true)) do
+					if not seen[script] then
+						seen[script] = true
+						table.insert(scripts, script)
+					end
+				end
+			end
+
+			table.sort(scripts)
+			return scripts
+		end
+
+		local send_to_idf_terminal
+
+		local function apply_idf_activate_script(script, callback, refresh_active)
+			idf_activate_script = script
+			idf_initialized = false
+			vim.notify("ESP-IDF: " .. vim.fn.fnamemodify(idf_activate_script, ":t"))
+
+			if refresh_active and idf_started then
+				send_to_idf_terminal("")
+			end
+
+			if callback then
+				callback()
+			end
+		end
+
+		local function select_idf_activate_script(callback, refresh_active)
+			local scripts = find_idf_activate_scripts()
+
+			if #scripts == 0 then
+				vim.notify("No ESP-IDF activate script found in ~/.espressif/tools", vim.log.levels.ERROR)
+				return
+			end
+
+			local ok, pickers = pcall(require, "telescope.pickers")
+			if not ok then
+				vim.ui.select(scripts, { prompt = "ESP-IDF version: " }, function(script)
+					if script then
+						apply_idf_activate_script(script, callback, refresh_active)
+					end
+				end)
+				return
+			end
+
+			local finders = require("telescope.finders")
+			local conf = require("telescope.config").values
+			local actions = require("telescope.actions")
+			local action_state = require("telescope.actions.state")
+
+			pickers
+				.new({}, {
+					prompt_title = "ESP-IDF version",
+					finder = finders.new_table({
+						results = scripts,
+						entry_maker = function(script)
+							local name = vim.fn.fnamemodify(script, ":t")
+							local parent = vim.fn.fnamemodify(script, ":h:t")
+							return {
+								value = script,
+								display = string.format("%s  %s", name, parent),
+								ordinal = script,
+							}
+						end,
+					}),
+					sorter = conf.generic_sorter({}),
+					attach_mappings = function(prompt_bufnr)
+						actions.select_default:replace(function()
+							local selection = action_state.get_selected_entry()
+							actions.close(prompt_bufnr)
+
+							if selection then
+								apply_idf_activate_script(selection.value, callback, refresh_active)
+							end
+						end)
+						return true
+					end,
+				})
+				:find()
+		end
+
+		send_to_idf_terminal = function(command)
 			local root = get_project_root()
-			local commands = {
-				"cd " .. shellescape(root),
-			}
+			local commands = {}
+
+			if idf_project_root ~= root then
+				table.insert(commands, "cd " .. shellescape(root))
+				idf_project_root = root
+			end
 
 			if not idf_initialized then
-				table.insert(commands, "get_idf")
+				table.insert(commands, "source " .. shellescape(idf_activate_script))
 				idf_initialized = true
 			end
 
@@ -145,10 +239,18 @@ return {
 			end
 
 			idf_term:open()
-			idf_term:send(table.concat(commands, "\n"), false)
+			idf_started = true
+			idf_term:send("\21" .. table.concat(commands, "\n"), false)
 		end
 
 		local function idf(command)
+			if not idf_activate_script then
+				select_idf_activate_script(function()
+					send_to_idf_terminal(command)
+				end)
+				return
+			end
+
 			send_to_idf_terminal(command)
 		end
 
@@ -172,6 +274,9 @@ return {
 		keymap.set("n", "<leader>Ei", function()
 			idf("")
 		end, { desc = "ESP-IDF init terminal" })
+		keymap.set("n", "<leader>ES", function()
+			select_idf_activate_script(nil, true)
+		end, { desc = "ESP-IDF select version" })
 		keymap.set("n", "<leader>Eb", function()
 			idf("idf.py build")
 		end, { desc = "ESP-IDF build" })
@@ -185,7 +290,7 @@ return {
 			idf("idf.py reconfigure")
 		end, { desc = "ESP-IDF reconfigure" })
 		keymap.set("n", "<leader>Ec", function()
-			idf("idf.py fullclean")
+			idf("idf.py fullclean && rm -rf build")
 		end, { desc = "ESP-IDF fullclean" })
 		keymap.set("n", "<leader>Es", function()
 			vim.ui.input({ prompt = "ESP target: " }, function(target)

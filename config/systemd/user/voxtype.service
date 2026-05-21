@@ -6,7 +6,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/voxtype daemon
+ExecStart=/usr/lib/voxtype/voxtype-vulkan daemon
 Restart=on-failure
 RestartSec=5
 

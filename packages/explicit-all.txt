@@ -55,6 +55,7 @@ efibootmgr
 efitools
 egl-wayland
 eh-vial-appimage
+eim-cli
 ethtool
 exfatprogs
 eza
@@ -106,6 +107,7 @@ lib32-vulkan-intel
 libdvdcss
 libgsf
 libopenraw
+libslirp
 libva-nvidia-driver
 limine
 limine-mkinitcpio-hook

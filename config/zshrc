@@ -161,10 +161,6 @@ zinit wait"3" lucid nocd as"null" id-as"external-tools" \
     ' \
 for zdharma-continuum/null
 
-get_idf() {
-  source "$IDF_PATH/export.sh"
-}
-
 alias to_clipboard="xclip -selection clipboard"
 alias perf='echo performance | sudo tee /sys/firmware/acpi/platform_profile'
 alias bal='echo balanced | sudo tee /sys/firmware/acpi/platform_profile'
