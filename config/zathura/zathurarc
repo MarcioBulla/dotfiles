@@ -1,1 +1,3 @@
 include noctaliarc
+set synctex true
+set synctex-editor-command "nvr --servername /tmp/nvim-server --remote-silent +%{line} %{input}"

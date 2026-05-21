@@ -89,11 +89,13 @@ export PROJECT_HOME="${HOME}/python"
 export HYPRSHOT_DIR="${HOME}/Pictures/Screenshots"
 export WALLPAPER="${HOME}/Pictures/Wallpaper"
 export KICAD="${HOME}/.local/share/kicad/8.0/"
+export PNPM_HOME="${HOME}/.local/share/pnpm"
 
 # PATH otimizado - evita duplicatas
 typeset -U path PATH
 path=(
     "$JAVA_HOME/bin"
+    "$PNPM_HOME"
     "$HOME/.local/bin"
     $path
 )

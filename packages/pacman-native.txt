@@ -9,6 +9,7 @@ base
 base-devel
 bash-completion
 bat
+biber
 bind
 blender
 bluez
@@ -63,6 +64,7 @@ ffmpegthumbs
 firefox
 freecad
 fsarchiver
+gamescope
 gifski
 gimp
 git
@@ -76,6 +78,7 @@ gst-plugin-va
 gst-plugins-bad
 gst-plugins-ugly
 hdparm
+helium-browser-bin
 hwdetect
 hwinfo
 hyprpicker
@@ -117,6 +120,8 @@ localsend
 logrotate
 lsb-release
 lsscsi
+lua51
+luarocks
 lvm2
 man-db
 man-pages
@@ -142,6 +147,7 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 nss-mdns
+numbat
 nvidia-prime
 nvidia-settings
 nvidia-utils
@@ -163,12 +169,14 @@ pkgfile
 platformio-core
 plocate
 plymouth
+pnpm
 poppler-glib
 power-profiles-daemon
 pv
 python
 python-defusedxml
 python-packaging
+python-pynvim
 qt5-wayland
 rebuild-detector
 reflector
@@ -191,7 +199,17 @@ sysfsutils
 tesseract
 tesseract-data-eng
 texinfo
+texlive-binextra
+texlive-langenglish
+texlive-langportuguese
+texlive-langspanish
+texlive-latex
+texlive-latexextra
+texlive-latexrecommended
+texlive-mathscience
+texlive-pictures
 translate-shell
+tree-sitter-cli
 ttf-bitstream-vera
 ttf-dejavu
 ttf-jetbrains-mono-nerd
@@ -217,11 +235,13 @@ which
 wireplumber
 wlsunset
 wpa_supplicant
+wtype
 xdg-user-dirs
 xfsprogs
 xl2tpd
 yazi
 zathura
+zathura-pdf-poppler
 zig
 zip
 zoxide
