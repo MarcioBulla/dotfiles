@@ -232,13 +232,13 @@ return {
 			vim.cmd(command)
 		end
 
-		keymap.set("n", "<leader>pf", function()
+		keymap.set("n", "<leader>ptf", function()
 			python("float")
 		end, { desc = "Run Python Float" })
-		keymap.set("n", "<leader>ph", function()
+		keymap.set("n", "<leader>pth", function()
 			python("horizontal")
 		end, { desc = "Run Python Horizontal" })
-		keymap.set("n", "<leader>pv", function()
+		keymap.set("n", "<leader>ptv", function()
 			python("vertical", 60)
 		end, { desc = "Run Python Vertical" })
 	end,
