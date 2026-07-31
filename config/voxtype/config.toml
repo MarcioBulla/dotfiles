@@ -3,6 +3,9 @@
 # Location: ~/.config/voxtype/config.toml
 # All settings can be overridden via CLI flags
 
+# Keep transcription local and prevent accidental cloud-engine selection.
+engine = "whisper"
+
 # State file for external integrations (Waybar, polybar, etc.)
 # Use "auto" for default location ($XDG_RUNTIME_DIR/voxtype/state),
 # a custom path, or "disabled" to turn off. The daemon writes state
@@ -81,7 +84,7 @@ model = "large-v3-turbo"
 # The array form helps with multilingual users where Whisper might misdetect
 # the language, especially for short sentences.
 # See: https://github.com/openai/whisper#available-models-and-languages
-language = "auto"
+language = ["pt", "es", "en"]
 
 # Translate non-English speech to English
 translate = false
