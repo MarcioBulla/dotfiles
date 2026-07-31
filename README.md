@@ -52,40 +52,29 @@ The installer runs these steps in order:
 
 ## Symlinks
 
-The original files live in this repository. The system paths become symlinks that point to them:
+Stable files live in this repository. Their system paths become symlinks that point to them:
 
 ```text
 ~/.zshrc             -> ~/.dotfiles/config/zshrc
 ~/.config/arkrc      -> ~/.dotfiles/config/arkrc
-~/.config/btop       -> ~/.dotfiles/config/btop
 ~/.config/dolphinrc  -> ~/.dotfiles/config/dolphinrc
 ~/.config/fastfetch  -> ~/.dotfiles/config/fastfetch
 ~/.config/glow       -> ~/.dotfiles/config/glow
-~/.config/gtk-3.0    -> ~/.dotfiles/config/gtk-3.0
-~/.config/gtk-4.0    -> ~/.dotfiles/config/gtk-4.0
-~/.config/kdeglobals -> ~/.dotfiles/config/kdeglobals
 ~/.config/kde.org    -> ~/.dotfiles/config/kde.org
-~/.config/kitty      -> ~/.dotfiles/config/kitty
 ~/.config/marimo     -> ~/.dotfiles/config/marimo
 ~/.config/micro      -> ~/.dotfiles/config/micro
 ~/.config/mimeapps.list -> ~/.dotfiles/config/mimeapps.list
 ~/.config/nvtop      -> ~/.dotfiles/config/nvtop
-~/.config/niri       -> ~/.dotfiles/config/niri
-~/.config/noctalia/* -> individual links into ~/.dotfiles/config/noctalia
 ~/.config/nvim       -> ~/.dotfiles/config/nvim
 ~/.config/nwg-look   -> ~/.dotfiles/config/nwg-look
 ~/.config/okularpartrc -> ~/.dotfiles/config/okularpartrc
 ~/.config/pavucontrol.ini -> ~/.dotfiles/config/pavucontrol.ini
-~/.config/qt5ct      -> ~/.dotfiles/config/qt5ct
-~/.config/qt6ct      -> ~/.dotfiles/config/qt6ct
 ~/.config/user-dirs.dirs -> ~/.dotfiles/config/user-dirs.dirs
-~/.config/starship.toml -> ~/.dotfiles/config/starship.toml
 ~/.config/systemd    -> ~/.dotfiles/config/systemd
 ~/.config/voxtype    -> ~/.dotfiles/config/voxtype
 ~/.config/xdg-desktop-portal -> ~/.dotfiles/config/xdg-desktop-portal
 ~/.config/xsettingsd -> ~/.dotfiles/config/xsettingsd
 ~/.config/yazi       -> ~/.dotfiles/config/yazi
-~/.config/zathura    -> ~/.dotfiles/config/zathura
 ~/.local/bin/sync-class -> ~/.dotfiles/local/bin/sync-class
 ~/.local/bin/sync-doctorado -> ~/.dotfiles/local/bin/sync-doctorado
 ~/.local/share/kio   -> ~/.dotfiles/local/share/kio
@@ -97,6 +86,19 @@ Noctalia installs and updates its own plugin payloads under
 `~/.config/noctalia/plugins/`. The parent `~/.config/noctalia/` is a real local
 directory: its versioned configuration entries are individual symlinks, while
 `plugins/` remains physically outside this repository and is ignored by Git.
+
+Wallpaper-derived colors are also local runtime state. The generated
+`colors.json`, downloaded `colorschemes/`, `kdeglobals`, and Noctalia theme
+outputs for Niri, GTK, Qt, Kitty, btop, Zathura, KDE and Starship are
+intentionally excluded from Git. This includes Kitty's generated
+`current-theme.conf`, Starship's live `~/.config/starship.toml`, and KDE's
+`~/.local/share/color-schemes/noctalia.colors`.
+
+The parent directories for Niri, GTK, Qt, Kitty, btop, Zathura and Noctalia are
+real local directories; only stable files inside them are linked individually
+to this repository. `config/starship.base.toml` is the clean seed used to create
+a new local Starship configuration. Once created, the live file is owned by
+Starship and Noctalia and is not overwritten by the installer.
 
 Before replacing existing files, `scripts/install-symlinks.sh` creates:
 

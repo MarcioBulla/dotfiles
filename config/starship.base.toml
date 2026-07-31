@@ -1,0 +1,56 @@
+command_timeout = 1000
+scan_timeout = 30
+
+[aws]
+style = "bold #ffb86c"
+
+[character]
+error_symbol = "[󰜴](bold #ff5555)"
+success_symbol = "[󰜴](bold #50fa7b)"
+vimcmd_symbol = "[󰜱](bold #50fa7b)"
+
+[cmd_duration]
+style = "bold #f1fa8c"
+
+[directory]
+style = "bold #50fa7b"
+read_only = " "
+
+[git_branch]
+style = "bold #ff79c6"
+symbol = ' '
+
+[git_status]
+style = "bold #ff5555"
+
+[hostname]
+style = "bold #bd93f9"
+ssh_symbol = " "
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold #8be9fd"
+
+[python]
+symbol = ' '
+
+[package]
+symbol = "󰏗 "
+disabled = true
+
+[battery]
+disabled = true
+
+[sudo]
+style = 'bold green'
+symbol = ' '
+disabled = false
+
+[os.symbols]
+Arch = " "
+
+[php]
+symbol = '󰌟 '
+
+[lua]
+symbol = ' '
