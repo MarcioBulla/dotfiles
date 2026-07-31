@@ -71,7 +71,7 @@ The original files live in this repository. The system paths become symlinks tha
 ~/.config/mimeapps.list -> ~/.dotfiles/config/mimeapps.list
 ~/.config/nvtop      -> ~/.dotfiles/config/nvtop
 ~/.config/niri       -> ~/.dotfiles/config/niri
-~/.config/noctalia   -> ~/.dotfiles/config/noctalia
+~/.config/noctalia/* -> individual links into ~/.dotfiles/config/noctalia
 ~/.config/nvim       -> ~/.dotfiles/config/nvim
 ~/.config/nwg-look   -> ~/.dotfiles/config/nwg-look
 ~/.config/okularpartrc -> ~/.dotfiles/config/okularpartrc
@@ -94,9 +94,9 @@ The original files live in this repository. The system paths become symlinks tha
 In this section, `->` means the system path is a symlink pointing to the path inside this repository. This applies to both `~/.config` entries and `~/.local/share` entries.
 
 Noctalia installs and updates its own plugin payloads under
-`~/.config/noctalia/plugins/`. That directory remains local and is intentionally
-ignored by Git; only the Noctalia configuration that selects and configures the
-plugins is versioned here.
+`~/.config/noctalia/plugins/`. The parent `~/.config/noctalia/` is a real local
+directory: its versioned configuration entries are individual symlinks, while
+`plugins/` remains physically outside this repository and is ignored by Git.
 
 Before replacing existing files, `scripts/install-symlinks.sh` creates:
 
