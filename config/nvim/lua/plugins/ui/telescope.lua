@@ -44,8 +44,64 @@ return {
 			-- LSP
 			keymap("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "Document Symbols" })
 
-			-- SPEEL SUGGEST
-			keymap({ "i", "n" }, "<C-.>", builtin.spell_suggest, { desc = "Spell Suggest" })
+			local function ltex_code_action(retries)
+				retries = retries or 10
+
+				local client = vim.lsp.get_clients({ bufnr = 0, name = "ltex" })[1]
+					or vim.lsp.get_clients({ bufnr = 0, name = "ltex_plus" })[1]
+
+				if not client then
+					if retries > 0 then
+						vim.defer_fn(function()
+							ltex_code_action(retries - 1)
+						end, 100)
+						return
+					end
+
+					vim.notify("LTeX is not attached to this buffer", vim.log.levels.WARN)
+					return
+				end
+
+				local line = vim.api.nvim_win_get_cursor(0)[1] - 1
+				local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+				params.context = {
+					diagnostics = vim.diagnostic.get(0, { lnum = line }),
+				}
+
+				client:request("textDocument/codeAction", params, function(err, result)
+					if err then
+						vim.notify(err.message or tostring(err), vim.log.levels.ERROR)
+						return
+					end
+
+					if not result or vim.tbl_isempty(result) then
+						vim.notify("No LanguageTool suggestions", vim.log.levels.INFO)
+						return
+					end
+
+					vim.ui.select(result, {
+						prompt = "LanguageTool suggestions",
+						format_item = function(action)
+							return action.title
+						end,
+					}, function(action)
+						if not action then
+							return
+						end
+
+						if action.edit then
+							vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+						end
+
+						if action.command then
+							vim.lsp.buf.execute_command(action.command)
+						end
+					end)
+				end, 0)
+			end
+
+			-- LSP SUGGEST
+			keymap({ "i", "n" }, "<C-.>", ltex_code_action, { desc = "LanguageTool suggestions" })
 
 			-- HELP
 			keymap("n", "<leader>hc", builtin.commands, { desc = "Find commands" })

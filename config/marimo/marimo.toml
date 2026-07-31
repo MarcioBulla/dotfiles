@@ -1,19 +1,24 @@
-[save]
-autosave = "after_delay"
-format_on_save = false
-autosave_delay = 1000
-
-[formatting]
-line_length = 79
-
 [language_servers.pylsp]
+enable_pylint = false
 enable_pyflakes = false
-enable_flake8 = false
-enabled = false
 enable_ruff = true
 enable_pydocstyle = false
-enable_pylint = false
+enabled = false
+enable_flake8 = false
 enable_mypy = true
+
+[experimental]
+rtc_v2 = false
+
+[display]
+code_editor_font_size = 16
+default_width = "medium"
+dataframes = "rich"
+default_table_max_columns = 50
+theme = "system"
+default_table_page_size = 10
+cell_output = "below"
+reference_highlighting = true
 
 [keymap]
 destructive_delete = true
@@ -21,69 +26,64 @@ preset = "vim"
 
 [keymap.overrides]
 
-[completion]
-copilot = false
-activate_on_typing = true
-signature_hint_on_typing = false
+[formatting]
+line_length = 79
 
 [mcp]
 presets = []
 
 [mcp.mcpServers]
 
+[runtime]
+auto_instantiate = false
+watcher_on_save = "lazy"
+default_sql_output = "auto"
+on_cell_change = "autorun"
+default_csv_encoding = "utf-8"
+std_stream_max_bytes = 1000000
+default_auto_download = ["ipynb", "html"]
+output_max_bytes = 8000000
+show_tracebacks = false
+auto_reload = "off"
+reactive_tests = true
+
+[package_management]
+manager = "uv"
+
 [ai]
 inline_tooltip = true
 
 [ai.custom_providers]
 
-[ai.open_ai]
-api_key = ""
-
 [ai.ollama]
 base_url = "http://localhost:11434/v1"
 
+[ai.open_ai]
+api_key = ""
+
 [ai.models]
-custom_models = ["ollama/llama3.1:8b", "ollama/qwen2.5-coder:7b"]
+edit_model = "ollama/llama3.1:8b"
 chat_model = "ollama/llama3.1:8b"
 displayed_models = ["ollama/qwen3:8b", "ollama/llama3.1:8b"]
-edit_model = "ollama/llama3.1:8b"
-
-[server]
-follow_symlink = false
-browser = "default"
-
-[diagnostics]
-sql_linter = true
-
-[experimental]
-rtc_v2 = false
+custom_models = ["ollama/llama3.1:8b", "ollama/qwen2.5-coder:7b"]
 
 [snippets]
 include_default_snippets = true
 custom_paths = []
 
-[package_management]
-manager = "uv"
+[diagnostics]
+sql_linter = true
 
-[display]
-default_table_page_size = 10
-cell_output = "below"
-dataframes = "rich"
-default_table_max_columns = 50
-default_width = "medium"
-theme = "light"
-reference_highlighting = true
-code_editor_font_size = 16
+[completion]
+signature_hint_on_typing = false
+activate_on_typing = true
+copilot = false
 
-[runtime]
-output_max_bytes = 8000000
-watcher_on_save = "lazy"
-default_csv_encoding = "utf-8"
-std_stream_max_bytes = 1000000
-show_tracebacks = false
-default_sql_output = "auto"
-default_auto_download = ["ipynb", "html"]
-auto_reload = "off"
-reactive_tests = true
-auto_instantiate = false
-on_cell_change = "autorun"
+[server]
+browser = "default"
+follow_symlink = false
+
+[save]
+autosave = "after_delay"
+format_on_save = false
+autosave_delay = 1000

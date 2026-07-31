@@ -4,6 +4,7 @@ return {
 	event = "InsertEnter",
 	dependencies = {
 		"Exafunction/codeium.nvim",
+		"jmbuhr/cmp-pandoc-references",
 	},
 	opts = {
 		keymap = {
@@ -26,7 +27,26 @@ return {
 			documentation = { auto_show = false },
 		},
 		sources = {
-			default = { "lsp", "path", "buffer", "snippets", "codeium" },
+			default = { "lsp", "path", "buffer", "snippets", "pandoc_references", "codeium" },
+			transform_items = function(_, items)
+				local seen = {}
+				local deduped = {}
+
+				for _, item in ipairs(items) do
+					local key = table.concat({
+						item.label or "",
+						tostring(item.kind or ""),
+						item.insertText or "",
+					}, "\0")
+
+					if not seen[key] then
+						seen[key] = true
+						deduped[#deduped + 1] = item
+					end
+				end
+
+				return deduped
+			end,
 
 			providers = {
 				lsp = {
@@ -40,6 +60,11 @@ return {
 				},
 				snippets = {
 					score_offset = 10,
+				},
+				pandoc_references = {
+					name = "pandoc_references",
+					module = "cmp-pandoc-references.blink",
+					score_offset = -5,
 				},
 				codeium = {
 					name = "Codeium",

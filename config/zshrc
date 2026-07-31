@@ -95,12 +95,16 @@ export PNPM_HOME="${HOME}/.local/share/pnpm"
 typeset -U path PATH
 path=(
     "$JAVA_HOME/bin"
-    "$PNPM_HOME"
+    "$PNPM_HOME/bin"
     "$HOME/.local/bin"
     $path
 )
 export PATH
 
+# KeePassXC SSH Agent
+if [[ -z "$SSH_CONNECTION" ]]; then
+  export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+fi
 # Prompt - Starship carregado primeiro para melhor UX
 zinit ice lucid as"command" from"gh-r" \
     atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
@@ -166,6 +170,10 @@ alias perf='echo performance | sudo tee /sys/firmware/acpi/platform_profile'
 alias bal='echo balanced | sudo tee /sys/firmware/acpi/platform_profile'
 alias eco='echo low-power | sudo tee /sys/firmware/acpi/platform_profile'
 alias max='echo max-power | sudo tee /sys/firmware/acpi/platform_profile'
+
+get_idf() {
+  source "$HOME/.local/bin/get_idf" "$@"
+}
 
 if command -v eza >/dev/null; then
   alias ls='eza --icons --group-directories-first'

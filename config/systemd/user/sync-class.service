@@ -1,0 +1,9 @@
+[Unit]
+Description=Sincronizar pasta Class com Google Drive
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/sync-class
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=6

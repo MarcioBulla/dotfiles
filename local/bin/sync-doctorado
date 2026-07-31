@@ -1,0 +1,47 @@
+#!/bin/sh
+
+lock_dir=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}
+if [ ! -d "$lock_dir" ] || [ ! -w "$lock_dir" ]; then
+  lock_dir=${TMPDIR:-/tmp}
+fi
+exec 9>"$lock_dir/sync-doctorado.lock"
+
+if ! flock -n 9; then
+  echo "A sincronização do Doctorado já está em execução." >&2
+  exit 75
+fi
+
+if [ -t 1 ]; then
+  set -- --progress --stats 1s --stats-one-line "$@"
+else
+  set -- --stats 1m --stats-one-line-date "$@"
+fi
+
+exec rclone bisync \
+  "$HOME/Documents/Doctorado_Marcio-Bulla" \
+  doctorado: \
+  --create-empty-src-dirs \
+  --fast-list \
+  --exclude '/.*' \
+  --exclude '**/.*' \
+  --exclude '/.*/**' \
+  --exclude '**/.*/**' \
+  --exclude '/_*' \
+  --exclude '**/_*' \
+  --exclude '/_*/**' \
+  --exclude '**/_*/**' \
+  --exclude 'AGENTS.md' \
+  --exclude '**/AGENTS.md' \
+  --exclude 'graphify-out/**' \
+  --exclude '**/graphify-out/**' \
+  --exclude '*.swp' \
+  --exclude '*.swo' \
+  --exclude '*~' \
+  --exclude '*.pyc' \
+  --compare size,modtime \
+  --resilient \
+  --recover \
+  --max-lock 2m \
+  --conflict-resolve newer \
+  --conflict-loser num \
+  "$@"

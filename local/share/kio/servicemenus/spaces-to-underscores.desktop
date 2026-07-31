@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+Name=Replace spaces with underscores
+MimeType=all/allfiles;inode/directory;
+Actions=spacesToUnderscores;
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+X-KDE-Priority=TopLevel
+
+[Desktop Action spacesToUnderscores]
+Name=Replace spaces with underscores
+Icon=edit-rename
+Exec=/home/marcio/.local/bin/dolphin-spaces-to-underscores %F

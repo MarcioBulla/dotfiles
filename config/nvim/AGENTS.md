@@ -20,7 +20,7 @@ Persistent project instructions for Codex in this Neovim config.
 - Follow existing keymap prefixes and `which-key` groupings.
 - Keep UI changes aligned with the current config.
 - When adding plugins, prefer lazy-loading through `cmd`, `keys`, `event`, or `ft` when appropriate.
-- Keep `markdown-preview.nvim` workspaces in the plugin default cache location; do not set `workspace_dir` to the current buffer directory.
+- Keep `markdown-preview.nvim` in the current working directory so relative local images are served; hide its HTML file and remove generated files when the preview stops.
 
 ## Maintenance
 

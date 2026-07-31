@@ -73,6 +73,15 @@ local function set_text_language(spell, ltex)
 		})
 	end
 
+	for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0, name = "ltex" })) do
+		client.config.settings = client.config.settings or {}
+		client.config.settings.ltex = client.config.settings.ltex or {}
+		client.config.settings.ltex.language = ltex
+		client:notify("workspace/didChangeConfiguration", {
+			settings = client.config.settings,
+		})
+	end
+
 	vim.notify("Spell: " .. spell .. " | LTeX: " .. ltex)
 end
 

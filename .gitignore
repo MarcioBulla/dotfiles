@@ -1,4 +1,7 @@
 # Local/generated state
+/graphify-out/
+/config/sync-class.env
+*.bak
 *.log
 *.db
 *.db-shm

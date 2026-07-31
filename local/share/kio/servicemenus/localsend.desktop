@@ -7,6 +7,6 @@ X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 X-KDE-Priority=TopLevel
 
 [Desktop Action sendWithLocalSend]
-Name=Enviar com LocalSend
+Name=Send with LocalSend
 Icon=localsend
-Exec=localsend %F
+Exec=/home/marcio/.local/bin/dolphin-send-with-localsend %F

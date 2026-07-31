@@ -23,7 +23,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		keys = {
-			{ "<leader>p", "<cmd>lua require('uv').pick_uv_commands()<cr>", desc = "UV Commands", mode = { "n", "v" } },
+			{ "<leader>pp", "<cmd>lua require('uv').pick_uv_commands()<cr>", desc = "UV Commands", mode = { "n", "v" } },
 			{ "<leader>pr", "<cmd>UVRunFile<cr>", desc = "UV Run Current File" },
 			{ "<leader>ps", ":<C-u>UVRunSelection<cr>", desc = "UV Run Selection", mode = "v" },
 			{ "<leader>pf", "<cmd>UVRunFunction<cr>", desc = "UV Run Function" },

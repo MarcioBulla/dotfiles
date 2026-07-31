@@ -8,16 +8,6 @@ output "DP-1" {
     position x=0 y=0
 }
 
-output "DP-3" {
-    scale 1
-    position x=0 y=0
-}
-
-output "HDMI-A-1" {
-    scale 1
-    position x=0 y=0
-}
-
 output "eDP-1" {
     scale 1.5
     focus-at-startup

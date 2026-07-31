@@ -62,3 +62,12 @@ if [ -d "${repo_dir}/local/share" ]; then
     link_path "$source" "${HOME}/.local/share/${name}"
   done
 fi
+
+if [ -d "${repo_dir}/local/bin" ]; then
+  mkdir -p "${HOME}/.local/bin"
+  for source in "${repo_dir}"/local/bin/*; do
+    [ -e "$source" ] || [ -L "$source" ] || continue
+    name=$(basename -- "$source")
+    link_path "$source" "${HOME}/.local/bin/${name}"
+  done
+fi

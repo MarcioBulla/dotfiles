@@ -1,7 +1,14 @@
+archlinux-java-run
 eh-vial-appimage
+eim-cli
+gmsh-bin
+kahip
 linux-wifi-hotspot
+minecraft-launcher
 neovim-remote
 python-pywalfox
 qt5ct-kde
 qt6ct-kde
+quarto-cli
+udunits
 voxtype

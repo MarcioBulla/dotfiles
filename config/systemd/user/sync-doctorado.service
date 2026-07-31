@@ -1,0 +1,9 @@
+[Unit]
+Description=Sincronizar pasta Doctorado com Google Drive
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/sync-doctorado
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=6

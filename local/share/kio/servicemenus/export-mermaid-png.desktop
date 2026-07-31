@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+MimeType=text/markdown;text/x-markdown;text/plain;
+ServiceTypes=KonqPopupMenu/Plugin
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+X-KDE-Priority=TopLevel
+Actions=ExportMermaidPNG;
+
+[Desktop Action ExportMermaidPNG]
+Name=Export Mermaid to PNG (300 DPI)
+Name[pt_BR]=Exportar Mermaid para PNG (300 DPI)
+Icon=image-png
+Exec=/home/marcio/.local/bin/mmd2png %F
