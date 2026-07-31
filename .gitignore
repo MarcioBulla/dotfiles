@@ -1,6 +1,7 @@
 # Local/generated state
 /graphify-out/
 /config/sync-class.env
+/config/noctalia/plugins/
 *.bak
 *.log
 *.db

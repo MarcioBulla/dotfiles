@@ -93,6 +93,11 @@ The original files live in this repository. The system paths become symlinks tha
 
 In this section, `->` means the system path is a symlink pointing to the path inside this repository. This applies to both `~/.config` entries and `~/.local/share` entries.
 
+Noctalia installs and updates its own plugin payloads under
+`~/.config/noctalia/plugins/`. That directory remains local and is intentionally
+ignored by Git; only the Noctalia configuration that selects and configures the
+plugins is versioned here.
+
 Before replacing existing files, `scripts/install-symlinks.sh` creates:
 
 ```text
