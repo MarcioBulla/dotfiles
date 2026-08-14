@@ -1,7 +1,8 @@
 return {
 	"neovim/nvim-lspconfig",
 	config = function()
-		local languagetool_uri = "http://127.0.0.1:8081"
+		local languagetool_uri = vim.env.LANGUAGETOOL_HTTP_SERVER_URI
+			or "https://languagetool.marciobulla.com"
 		local ltex_filetypes = { "tex", "plaintex", "bib", "markdown", "pandoc", "quarto", "rmd", "text" }
 		local ltex_settings = {
 			ltex = {

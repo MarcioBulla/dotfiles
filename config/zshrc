@@ -101,6 +101,14 @@ path=(
 )
 export PATH
 
+# Atuin - carregado sincronamente pelo Zinit para registrar desde o primeiro comando.
+# O FZF e carregado mais tarde; esta variavel impede que ele sobrescreva Ctrl+R.
+typeset -g FZF_CTRL_R_COMMAND=''
+
+zinit ice lucid has"atuin" nocd as"null" id-as"atuin-shell-integration" \
+    atload'eval "$(atuin init zsh --disable-ai)"'
+zinit light zdharma-continuum/null
+
 # KeePassXC SSH Agent
 if [[ -z "$SSH_CONNECTION" ]]; then
   export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

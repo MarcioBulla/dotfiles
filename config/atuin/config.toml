@@ -1,0 +1,11 @@
+# Configuração portátil. A chave de criptografia e a sessão permanecem em
+# ~/.local/share/atuin e nunca devem ser versionadas neste repositório.
+auto_sync = true
+sync_address = "https://atuin.marciobulla.com"
+sync_frequency = "10m"
+search_mode = "fulltext"
+enter_accept = true
+secrets_filter = true
+
+# O Atuin é atualizado pelo gerenciador de pacotes do sistema.
+update_check = false

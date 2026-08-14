@@ -3,7 +3,6 @@ ananicy-cpp.service                enabled disabled
 avahi-daemon.service               enabled disabled
 bluetooth.service                  enabled disabled
 getty@.service                     enabled enabled
-languagetool.service               enabled disabled
 limine-snapper-sync.service        enabled disabled
 mullvad-daemon.service             enabled disabled
 NetworkManager-dispatcher.service  enabled disabled

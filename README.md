@@ -57,6 +57,7 @@ Stable files live in this repository. Their system paths become symlinks that po
 ```text
 ~/.zshrc             -> ~/.dotfiles/config/zshrc
 ~/.config/arkrc      -> ~/.dotfiles/config/arkrc
+~/.config/atuin      -> ~/.dotfiles/config/atuin
 ~/.config/dolphinrc  -> ~/.dotfiles/config/dolphinrc
 ~/.config/fastfetch  -> ~/.dotfiles/config/fastfetch
 ~/.config/glow       -> ~/.dotfiles/config/glow
@@ -136,6 +137,38 @@ result with `git diff` and commit it normally.
 The `sync-class` helper keeps its Google Drive folder ID outside Git. Copy
 `config/sync-class.env.example` to `~/.config/sync-class.env`, fill in the value,
 and protect the private file with `chmod 600 ~/.config/sync-class.env`.
+
+## Remote Atuin and LanguageTool
+
+The Zsh configuration loads Atuin synchronously through Zinit so commands are
+recorded from the beginning of the interactive shell. Its versioned client
+configuration points to the private server at:
+
+```text
+https://atuin.marciobulla.com
+```
+
+Only `config/atuin/config.toml` is tracked. The encryption key, login session,
+history database and other runtime data remain under `~/.local/share/atuin` and
+must never be committed.
+
+On another device, apply the same versioned configuration, run
+`atuin login -u marcio`, enter the same encryption key returned by `atuin key`
+on an already trusted client, and then run `atuin sync`. Each device keeps its
+own local database and login session; only encrypted history is synchronized.
+Store the encryption key in a password manager, never in this repository.
+
+Neovim's LTeX clients use the rootless LanguageTool server hosted on ColdLab:
+
+```text
+https://languagetool.marciobulla.com
+```
+
+This is a private Pangolin resource, so the Pangolin Client must be connected
+and the current user or machine must have access. Set
+`LANGUAGETOOL_HTTP_SERVER_URI` before starting Neovim to override the endpoint.
+The local `languagetool.service` and Arch package are intentionally absent to
+avoid keeping a Java server in memory on every workstation.
 
 ## System inventory
 

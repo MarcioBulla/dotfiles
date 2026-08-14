@@ -10,5 +10,7 @@ python-pywalfox
 qt5ct-kde
 qt6ct-kde
 quarto-cli
+stoat-desktop-bin
+triliumnext-bin
 udunits
 voxtype

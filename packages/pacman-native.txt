@@ -4,6 +4,7 @@ alsa-firmware
 alsa-plugins
 alsa-utils
 ark
+atuin
 awesome-terminal-fonts
 base
 base-devel
@@ -65,9 +66,11 @@ f2fs-tools
 fastfetch
 ffmpegthumbnailer
 ffmpegthumbs
+filelight
 firefox
 flatpak
 freecad
+freetube
 fsarchiver
 gamescope
 gcc-fortran
@@ -105,12 +108,12 @@ kicad
 kicad-library
 kicad-library-3d
 kitty
-languagetool
 less
 lib32-nvidia-utils
 lib32-opencl-nvidia
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
+libappimage
 libdvdcss
 libgsf
 libopenraw
@@ -216,6 +219,7 @@ slurp
 smartmontools
 snapper
 sof-firmware
+sshfs
 steam
 step-cli
 sudo
@@ -260,6 +264,7 @@ vulkan-intel
 wf-recorder
 wget
 which
+wireguard-tools
 wireplumber
 wlsunset
 wpa_supplicant
@@ -272,4 +277,5 @@ zathura
 zathura-pdf-poppler
 zig
 zip
+zotero
 zoxide
