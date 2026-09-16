@@ -1,0 +1,14 @@
+[Unit]
+Description=WayOLED mask for the Noctalia bar on the notebook OLED
+PartOf=graphical-session.target
+After=graphical-session.target
+ConditionPathIsExecutable=%h/.local/lib/wayoled/wayoled
+
+[Service]
+ExecStart=/usr/bin/python3 %h/.dotfiles/scripts/wayoled-bar.py
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=10
+
+[Install]
+WantedBy=graphical-session.target

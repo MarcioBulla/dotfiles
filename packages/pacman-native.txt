@@ -4,7 +4,11 @@ alsa-firmware
 alsa-plugins
 alsa-utils
 ark
+arm-none-eabi-binutils
+arm-none-eabi-gcc
+arm-none-eabi-newlib
 atuin
+audiotube
 awesome-terminal-fonts
 base
 base-devel
@@ -40,6 +44,7 @@ cachyos-v4-mirrorlist
 cachyos-wallpapers
 cachyos-zsh-config
 cantarell-fonts
+chatgpt-desktop-bin
 chawan
 chromium
 chwd
@@ -54,6 +59,7 @@ dmraid
 dnsmasq
 dolphin
 dosfstools
+dotnet-runtime-8.0
 duf
 e2fsprogs
 efibootmgr
@@ -72,6 +78,7 @@ flatpak
 freecad
 freetube
 fsarchiver
+fuse-overlayfs
 gamescope
 gcc-fortran
 gdal
@@ -94,6 +101,7 @@ helix
 hwdetect
 hwinfo
 hyprpicker
+i2pd
 inetutils
 inkscape
 intel-media-driver
@@ -115,6 +123,7 @@ lib32-vulkan-icd-loader
 lib32-vulkan-intel
 libappimage
 libdvdcss
+libfido2
 libgsf
 libopenraw
 libreoffice-fresh
@@ -133,8 +142,10 @@ linux-firmware
 localsend
 logrotate
 lsb-release
+lshw
 lsscsi
 lua51
+luanti
 luarocks
 lvm2
 man-db
@@ -142,6 +153,7 @@ man-pages
 mdadm
 meld
 mesa-utils
+meson
 micro
 mkinitcpio
 modemmanager
@@ -182,6 +194,7 @@ pacman-contrib
 paraview
 paru
 pavucontrol
+pcsc-tools
 pdfslicer
 perl
 pipewire-alsa
@@ -190,6 +203,7 @@ pkgfile
 platformio-core
 plocate
 plymouth
+podman
 poppler-glib
 power-profiles-daemon
 proj
@@ -197,6 +211,7 @@ proxychains-ng
 pv
 python
 python-defusedxml
+python-kikit
 python-packaging
 python-pynvim
 qt5-wayland
@@ -219,6 +234,7 @@ slurp
 smartmontools
 snapper
 sof-firmware
+solaar
 sshfs
 steam
 step-cli
@@ -239,7 +255,9 @@ texlive-latexextra
 texlive-latexrecommended
 texlive-mathscience
 texlive-pictures
+torbrowser-launcher
 translate-shell
+transmission-qt
 tree-sitter-cli
 ttf-bitstream-vera
 ttf-dejavu
@@ -261,11 +279,13 @@ vlc-plugins-all
 vpl-gpu-rt
 vulkan-icd-loader
 vulkan-intel
+wayland-protocols
 wf-recorder
 wget
 which
 wireguard-tools
 wireplumber
+wl-mirror
 wlsunset
 wpa_supplicant
 wtype
@@ -273,6 +293,8 @@ xdg-user-dirs
 xfsprogs
 xl2tpd
 yazi
+yt-dlp
+yubikey-manager
 zathura
 zathura-pdf-poppler
 zig

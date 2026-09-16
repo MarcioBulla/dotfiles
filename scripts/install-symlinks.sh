@@ -169,7 +169,7 @@ for source in "${repo_dir}"/config/*; do
 done
 
 setup_split_config "${repo_dir}/config/noctalia" "${HOME}/.config/noctalia" \
-  colors.json colorschemes
+  plugins colors.json colorschemes
 setup_split_config "${repo_dir}/config/niri" "${HOME}/.config/niri" noctalia.kdl
 setup_split_config "${repo_dir}/config/btop" "${HOME}/.config/btop" themes/noctalia.theme
 setup_split_config "${repo_dir}/config/kitty" "${HOME}/.config/kitty" \

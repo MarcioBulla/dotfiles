@@ -1,0 +1,495 @@
+# Noctalia v5.1: merged user configuration, including GUI preferences.
+# Keep v4 settings.json and user-templates.toml for rollback.
+# GUI overrides in ~/.local/state/noctalia/settings.toml take precedence.
+[include]
+autoload = false
+
+[bar.default]
+background_opacity = 0.59999998658895493
+center = [ "group:g5", "widget_2", "widget_3", "spacer_5" ]
+end = [ "group:g7", "spacer_5", "group:g6", "spacer_2", "group:g3", "spacer2", "privacy", "group:g4" ]
+font_family = "JetBrainsMono Nerd Font"
+font_scale = 0.79999998956918716
+font_weight = 700
+margin_edge = 0
+margin_ends = 0
+padding = 2
+position = "top"
+radius = 0
+start = [ "launcher", "spacer_4", "group:g1", "spacer_3", "workspaces", "active_window" ]
+thickness = 20
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "bar", "cpu", "temp", "ram" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g3"
+    members = [ "network", "bluetooth", "volume", "brightness" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g4"
+    members = [ "battery", "notifications", "control-center" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g5"
+    members = [ "widget", "clock", "bar_2" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g6"
+    members = [ "tray", "shelly" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g7"
+    members = [ "audio_visualizer", "media" ]
+    opacity = 1.0
+    padding = 6.0
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_google]
+    color = "primary"
+    name = "Doctorado"
+    type = "google"
+
+    [calendar.account.personal_google2]
+    color = "secondary"
+    name = "Personal"
+    type = "google"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[[control_center.shortcuts]]
+type = "nightlight"
+
+[[control_center.shortcuts]]
+type = "notification"
+
+[[control_center.shortcuts]]
+type = "noctalia/screen_recorder:toggle"
+
+[[control_center.shortcuts]]
+type = "power_profile"
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = false
+
+    [desktop_widgets.widget]
+
+[dock]
+enabled = false
+
+[hot_corners]
+delay_ms = 200
+enabled = true
+
+    [hot_corners.bottom_left]
+    action = "window_switcher"
+
+[idle]
+pre_action_fade_seconds = 5.0
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 660.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 1800.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 600.0
+
+[location]
+address = "ba, Argentina"
+auto_locate = false
+
+[lockscreen]
+blur_intensity = 0.0
+lock_before_suspend = true
+tint_intensity = 0.0
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1", "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "DP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "DP-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 854.0
+    cy = 885.00006103515625
+    output = "eDP-1"
+    placement_height = 1067.0
+    placement_width = 1707.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[osd]
+background_opacity = 0.96999997831881046
+
+[plugin_settings."aabidk20/yt-music"]
+debug_logging = true
+mini_open_near_click = true
+mini_placement = "attached"
+panel_open_near_click = true
+
+[plugin_settings."ahmedhossamdev/sticky-notes"]
+file_format = "json"
+
+[plugin_settings."autumn/network-toolkit"]
+hotspot_ssid = "ColdJr"
+widget_display_mode = "network_bluetooth"
+widget_indicator_dots = "none"
+
+[plugin_settings."cleboost/ssh-launcher"]
+terminal = "/home/marcio/.local/bin/noctalia-ssh-kitty"
+
+[plugin_settings."felipeartur/ai-usagebar"]
+panel_open_near_click = true
+
+[plugin_settings."joshuaslate/shelly"]
+notify = true
+
+[plugins]
+enabled = [
+    "noctalia/screen_recorder",
+    "joshuaslate/shelly",
+    "felipeartur/ai-usagebar",
+    "ahmedhossamdev/sticky-notes",
+    "alexander/screen-toolkit",
+    "noctalia/translator",
+    "cleboost/ssh-launcher",
+    "weinguyen/procmon"
+]
+
+[shell]
+avatar_path = "/home/marcio/Pictures/My/profile_kit.png"
+clipboard_auto_paste = "off"
+font_family = "Adwaita Sans"
+niri_overview_type_to_launch_enabled = true
+password_style = "random"
+polkit_agent = true
+settings_show_advanced = false
+setup_wizard_enabled = false
+telemetry_enabled = true
+
+    [shell.launcher]
+    categories = false
+    compact = true
+    provider_prefix = ":"
+    sort_by_usage = true
+
+    [shell.panel]
+    clipboard_placement = "attached"
+    launcher_placement = "attached"
+    launcher_position = "top_left"
+    open_near_click_clipboard = true
+    open_near_click_control_center = true
+    open_near_click_launcher = true
+    open_near_click_session = true
+    open_near_click_wallpaper = true
+    polkit_placement = "attached"
+    transparency_mode = "soft"
+
+[theme]
+builtin = "Noctalia"
+mode = "dark"
+shell_mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-tonal-spot"
+
+    [theme.templates]
+    builtin_ids = [ "niri", "btop", "gtk3", "gtk4", "qt", "kcolorscheme", "starship" ]
+    community_ids = [ "codex", "brave-origin", "blender", "inkscape", "libreoffice", "fzf" ]
+    enable_builtin_templates = true
+    enable_community_templates = true
+
+        [theme.templates.user.atuin]
+        input_path = "~/.config/atuin/noctalia-template.toml"
+        output_path = "~/.config/atuin/themes/noctalia.toml"
+
+        [theme.templates.user.kitty-colors]
+        input_path = "/usr/share/noctalia/assets/templates/kitty/kitty.conf"
+        output_path = "~/.config/kitty/themes/noctalia.conf"
+        post_hook = "bash \"$HOME/.dotfiles/scripts/kitty-noctalia-colors.sh\""
+
+        [theme.templates.user.nvim-base16]
+        input_path = "~/.config/nvim/lua/theme/matugen-template.lua"
+        output_path = "~/.config/nvim/lua/theme/matugen.lua"
+        post_hook = "pkill -SIGUSR1 nvim || true"
+
+        [theme.templates.user.pywalfox]
+        input_path = "~/.dotfiles/config/noctalia/templates-v5/pywalfox.json"
+        output_path = "~/.cache/wal/colors.json"
+        post_hook = "pywalfox update"
+
+        [theme.templates.user.steam]
+        input_path = "~/.dotfiles/config/noctalia/templates-v5/steam.css"
+        output_path = "~/.steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css"
+
+        [theme.templates.user.zathura]
+        input_path = "~/.dotfiles/config/noctalia/templates-v5/zathurarc"
+        output_path = "~/.config/zathura/noctaliarc"
+
+[wallpaper]
+directory = "/home/marcio/Pictures/Wallpapers"
+edge_smoothness = 0.050000000000000003
+enabled = true
+fill_mode = "crop"
+transition = [ "fade", "disc", "stripes", "wipe", "honeycomb" ]
+transition_duration = 1500
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 300
+    order = "random"
+
+    [wallpaper.default]
+    path = "/home/marcio/Pictures/Wallpapers/Time_4k.png"
+
+    [wallpaper.last]
+    path = "/home/marcio/Pictures/Wallpapers/Time_4k.png"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/marcio/Pictures/Wallpapers/tux_PC.png"
+
+    [wallpaper.monitors.DP-2]
+    path = "/home/marcio/Pictures/Wallpapers/Time_4k.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/marcio/Pictures/Wallpapers/Time_4k.png"
+
+    [[wallpaper.favorite]]
+    path = "/home/marcio/Pictures/Wallpapers/2_pink_dust_dark_4k.png"
+    theme_mode = "dark"
+
+[weather]
+enabled = true
+unit = "metric"
+
+[widget.active_window]
+capsule = true
+max_length = 150
+min_length = 0
+title_scroll = "always"
+
+[widget.audio_visualizer]
+bands = 20
+reversed = true
+width = 80
+
+    [widget.audio_visualizer.actions]
+    back = "media previous"
+    forward = "media next"
+    left = "panel-toggle control-center media"
+    right = "media toggle"
+    scroll_down = "media previous"
+    scroll_up = "media next"
+
+[widget.bar]
+extras = "none"
+show_value = false
+type = "felipeartur/ai-usagebar:bar"
+vendor = "openai"
+visualization = "gauge"
+
+[widget.bar_2]
+type = "ahmedhossamdev/sticky-notes:bar"
+
+[widget.battery]
+show_label = false
+
+[widget.brightness]
+show_label = false
+
+[widget.clock]
+anchor = true
+
+[widget.launcher]
+capsule = true
+
+[widget.media]
+artist_first = true
+capsule = true
+hide_when_no_media = true
+max_length = 150
+min_length = 0
+show_progress = true
+title_scroll = "always"
+
+[widget.network]
+show_label = false
+vpn_status = "both"
+
+[widget.privacy]
+hide_inactive = true
+
+[widget.shelly]
+bar_label = "count_only"
+glyph = "arrow-big-up-lines-filled"
+hide_when_up_to_date = true
+type = "joshuaslate/shelly:shelly"
+
+[widget.spacer2]
+length = 32
+type = "spacer"
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spacer_3]
+length = 32
+type = "spacer"
+
+[widget.spacer_4]
+length = 32
+type = "spacer"
+
+[widget.spacer_5]
+length = 32
+type = "spacer"
+
+[widget.sysmon]
+show_value = false
+
+[widget.tray]
+capsule = true
+
+[widget.volume]
+show_label = false
+
+[widget.widget]
+type = "alexander/screen-toolkit:widget"
+
+[widget.widget_2]
+capsule = true
+type = "autumn/network-toolkit:widget"
+
+[widget.widget_3]
+type = "aabidk20/yt-music:widget"
+
+[widget.workspaces]
+hide_when_empty = true

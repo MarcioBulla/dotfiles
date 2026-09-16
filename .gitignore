@@ -1,4 +1,6 @@
 # Local/generated state
+/backups/noctalia-v4-*/
+/backups/noctalia-v5-*/
 /graphify-out/
 /config/sync-class.env
 /config/noctalia/plugins/

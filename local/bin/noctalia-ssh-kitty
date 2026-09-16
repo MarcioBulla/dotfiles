@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+import os, shlex, sys
+
+# SSH Launcher passes: -e sh -lc "ssh 'host'".
+if len(sys.argv) != 5 or sys.argv[1:4] != ["-e", "sh", "-lc"]:
+    raise SystemExit("Argumentos inesperados do SSH Launcher")
+command = shlex.split(sys.argv[4])
+if len(command) < 2 or command[0] != "ssh":
+    raise SystemExit("Comando SSH esperado")
+# Noctalia does not inherit the SSH agent configured by the interactive Zsh.
+os.environ.setdefault("SSH_AUTH_SOCK", f"{os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}")}/ssh-agent.socket")
+os.execvp("kitty", ["kitty", "-e", "kitten", *command])

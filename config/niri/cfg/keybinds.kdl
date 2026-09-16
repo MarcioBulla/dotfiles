@@ -3,21 +3,21 @@ binds {
     // ────────────── Keybindings ──────────────
     // https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
 
-    // ─── noctalia-shell keybinds ───
-    // https://docs.noctalia.dev/getting-started/keybinds/
+    // ─── Noctalia v5 keybinds ───
+    // https://docs.noctalia.dev/noctalia/ipc/
 
     Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
 
     // ─── Applications ───
     Mod+Return          repeat=false    hotkey-overlay-title="Open Terminal: kitty" { spawn "kitty"; }
     Mod+Shift+Return    repeat=false    hotkey-overlay-title="Open float Terminal: kitty" {spawn "kitty" "--class" "float-kitty";}
-    Mod+R               repeat=false    hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+T               repeat=false    hotkey-overlay-title="Open Translator: noctalia" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "" ""; }
+    Mod+R               repeat=false    hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+T               repeat=false    hotkey-overlay-title="Open Translator: noctalia" { spawn "noctalia" "msg" "panel-toggle" "launcher" ":tr "; }
     Mod+N               repeat=false    hotkey-overlay-title="Open Browser: Brave Origin" { spawn "brave-origin"; }
-    Mod+ALT+L           repeat=false    hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-    Mod+Shift+W         repeat=false    hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+ALT+L           repeat=false    hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
+    Mod+Shift+W         repeat=false    hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "noctalia msg panel-toggle session"; }
     Mod+P               repeat=false    hotkey-overlay-title="Open KeepassXC" {spawn "keepassxc"; }
-    Mod+B               repeat=false    hotkey-overlay-title="Clipboard History: noctalia" {spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    Mod+B               repeat=false    hotkey-overlay-title="Clipboard History: noctalia" {spawn-sh "noctalia msg panel-toggle clipboard"; }
     Mod+Z               repeat=false    hotkey-overlay-title="Voxtype Record Toggle" { spawn "voxtype" "record" "toggle"; }
     XF86Calculator      repeat=false    hotkey-overlay-title="Open Numbat Calculator" { spawn "kitty" "-o" "font_size=20" "-e" "numbat"; }
 
@@ -25,18 +25,18 @@ binds {
     Mod+E               repeat=false    hotkey-overlay-title="File Manager: Dolphin" { spawn "dolphin"; }
     Mod+Shift+E         repeat=false    hotkey-overlay-title="File Manager: Yazi" { spawn "kitty" "-e" "yazi"; }
     // ─── Media Controls ───
-    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-    XF86AudioMute                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
-    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
-    XF86AudioNext                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
-    XF86AudioPrev                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
-    XF86AudioPlay                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    XF86AudioPause                      allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-up 5"; }
+    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-down 5"; }
+    XF86AudioMute                       allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
+    XF86AudioNext                       allow-when-locked=true { spawn-sh "noctalia msg media next"; }
+    XF86AudioPrev                       allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
+    XF86AudioPlay                       allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioPause                      allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
 
     // ─── Brightness Controls ───
-    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
-    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
+    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
 
     // ─── Window Movement and Focus ───
     Mod+W                               { close-window; }
@@ -109,7 +109,6 @@ binds {
     Mod+Shift+8                         { move-column-to-workspace 8; }
     Mod+Shift+9                         { move-column-to-workspace 9; }
 
-    Mod+TAB                             { focus-workspace-previous; }
 
     // ─── Layout Controls ───
     Mod+F                               { maximize-column; }
@@ -128,11 +127,12 @@ binds {
     // ─── Screenshots ───
 
     Print             repeat=false      { screenshot-screen write-to-disk=true; }
-    CTRL+Print        repeat=false      { screenshot-screen; }
+    CTRL+Print        repeat=false      { screenshot-screen write-to-disk=false; }
 
     MOD+Print         repeat=false      { screenshot-window write-to-disk=true; }
-    CTRL+MOD+Print    repeat=false      { screenshot-window; }
+    CTRL+MOD+Print    repeat=false      { screenshot-window write-to-disk=false; }
 
+    // In the screenshot UI: Enter saves; Ctrl+C copies without saving to disk.
     Shift+Print       repeat=false      { screenshot; }
     CTRL+Shift+Print  repeat=false      { screenshot; }
 

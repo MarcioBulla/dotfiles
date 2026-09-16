@@ -20,3 +20,13 @@
 input_path = "~/.config/nvim/lua/theme/matugen-template.lua"
 output_path = "~/.config/nvim/lua/theme/matugen.lua"
 post_hook = 'pkill -SIGUSR1 nvim'
+
+# Replaces the built-in Kitty integration, whose full reload resets font zoom.
+[templates.kitty-colors]
+input_path = "/etc/xdg/quickshell/noctalia-shell/Assets/Templates/terminal/kitty.conf"
+output_path = "~/.config/kitty/themes/noctalia.conf"
+post_hook = 'bash "$HOME/.dotfiles/scripts/kitty-noctalia-colors.sh"'
+
+[templates.atuin]
+input_path = "~/.config/atuin/noctalia-template.toml"
+output_path = "~/.config/atuin/themes/noctalia.toml"
