@@ -200,3 +200,16 @@ if [ -d "${repo_dir}/local/bin" ]; then
     link_path "$source" "${HOME}/.local/bin/${name}"
   done
 fi
+
+# KeePassXC 2.7.x may resolve its automatic theme as light when it starts in
+# the background. Persist only the appearance override; keep its private INI
+# (browser integration, database metadata, and keys) outside this repository.
+if command -v kwriteconfig5 >/dev/null 2>&1; then
+  mkdir -p "${HOME}/.config/keepassxc"
+  kwriteconfig5 \
+    --file "${HOME}/.config/keepassxc/keepassxc.ini" \
+    --group GUI \
+    --key ApplicationTheme \
+    dark
+  printf 'setting: KeePassXC GUI/ApplicationTheme=dark\n'
+fi
