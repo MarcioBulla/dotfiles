@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export PLASMA_PLATFORM=mediacenter
+
+/usr/bin/systemctl start --no-block decky-bigscreen.service
+
+output_config_pid=""
+
+configure_bigscreen_output() {
+  for attempt in {1..30}; do
+    output_state="$(/bin/kscreen-doctor -o 2>/dev/null || true)"
+    if /usr/bin/awk '
+      /^Output:/ { hdmi = ($3 == "HDMI-A-1"); next }
+      hdmi && /^[[:space:]]+connected$/ { found = 1 }
+      END { exit !found }
+    ' <<<"$output_state"; then
+      /bin/kscreen-doctor \
+        output.HDMI-A-1.enable \
+        output.HDMI-A-1.priority.1 \
+        output.HDMI-A-1.position.0,0 \
+        output.eDP-1.disable >/dev/null 2>&1 || true
+      return
+    fi
+    sleep 1
+  done
+}
+
+cleanup() {
+  if [[ -n "$output_config_pid" ]]; then
+    kill "$output_config_pid" >/dev/null 2>&1 || true
+  fi
+  /usr/bin/systemctl stop --no-block decky-bigscreen.service >/dev/null 2>&1 || true
+}
+trap cleanup EXIT HUP INT TERM
+
+/usr/lib/plasma-dbus-run-session-if-needed /usr/bin/plasma-bigscreen-wayland &
+plasma_pid=$!
+configure_bigscreen_output &
+output_config_pid=$!
+wait "$plasma_pid"

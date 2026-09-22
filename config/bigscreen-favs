@@ -1,0 +1,79 @@
+[Favs][0]
+categories=System,TerminalEmulator
+comment=Fast, feature-rich, GPU based terminal
+desktopPath=/usr/share/applications/kitty.desktop
+entryPath=kitty
+icon=kitty
+name=kitty
+startupNotify=true
+storageId=kitty.desktop
+
+[Favs][1]
+categories=Game
+comment=Open Steam directly in Big Picture mode
+desktopPath=/home/marcio/.local/share/applications/steam-bigpicture.desktop
+entryPath=/usr/bin/steam steam://open/bigpicture
+icon=steam
+name=Steam Big Picture
+startupNotify=true
+storageId=steam-bigpicture.desktop
+
+[Favs][2]
+categories=Settings,HardwareSettings
+comment=Configure game controller lighting, sticks, triggers and buttons
+desktopPath=/usr/share/applications/deadband.desktop
+entryPath=deadband
+icon=deadband
+name=Deadband
+startupNotify=false
+storageId=deadband.desktop
+
+[Favs][3]
+categories=Emulator,Game,PackageManager
+comment=Platform for managing and playing retro games
+desktopPath=/home/marcio/.local/share/flatpak/exports/share/applications/net.retrodeck.retrodeck.desktop
+entryPath=/usr/bin/flatpak run --branch=stable --arch=x86_64 net.retrodeck.retrodeck
+icon=net.retrodeck.retrodeck
+name=RetroDECK
+startupNotify=false
+storageId=net.retrodeck.retrodeck.desktop
+
+[Favs][4]
+categories=Game
+comment=Browse and manage your self-hosted ROM library
+desktopPath=/home/marcio/.local/share/applications/romm-webapp.desktop
+entryPath=/home/marcio/.local/bin/romm-webapp
+icon=romm-webapp
+name=RomM
+startupNotify=true
+storageId=romm-webapp.desktop
+
+[Favs][5]
+categories=Game
+comment=application
+desktopPath=/home/marcio/.local/share/applications/freegosy-x86_64.desktop
+entryPath="/home/marcio/.local/bin/Freegosy-x86_64.AppImage"
+icon=freegosy-x86_64
+name=Freegosy
+startupNotify=false
+storageId=freegosy-x86_64.desktop
+
+[Favs][6]
+categories=Network
+comment=An open source desktop YouTube player built with privacy in mind.
+desktopPath=/usr/share/applications/FreeTube.desktop
+entryPath=freetube %U
+icon=freetube
+name=FreeTube
+startupNotify=false
+storageId=FreeTube.desktop
+
+[Favs][7]
+categories=Game,Emulator
+comment=Browse, download and play your RomM library
+desktopPath=/home/marcio/.local/share/applications/rommix-x86_64.desktop
+entryPath="/home/marcio/.local/bin/RomMix-x86_64.AppImage" %U
+icon=rommix-x86_64
+name=RomMix
+startupNotify=false
+storageId=rommix-x86_64.desktop

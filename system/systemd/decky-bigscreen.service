@@ -1,0 +1,17 @@
+[Unit]
+Description=Decky Loader for Plasma Bigscreen
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=HOME=/home/marcio
+Environment=UNPRIVILEGED_PATH=/home/marcio/homebrew
+Environment=PRIVILEGED_PATH=/home/marcio/homebrew
+Environment=LOG_LEVEL=INFO
+WorkingDirectory=/home/marcio/homebrew
+ExecStart=/home/marcio/homebrew/services/PluginLoader
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

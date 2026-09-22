@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Steam Big Picture
+Comment=Open Steam directly in Big Picture mode
+Exec=/home/marcio/.local/bin/steam-bigpicture
+TryExec=/usr/bin/steam
+Icon=steam
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=true
