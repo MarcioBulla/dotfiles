@@ -135,38 +135,6 @@ Before replacing existing files, `scripts/install-symlinks.sh` creates:
 
 Git provides history for files already in this repository. This one-time backup protects live files that are still outside Git while they are converted to symlinks, so it complements commits rather than replacing them.
 
-## OLED notebook bar (WayOLED)
-
-`wayoled-bar.service` starts with the graphical session and protects only the
-`eDP-1` bar: a 50% black mask over `0:0:1706:20` logical pixels, with its pattern
-shifted every 60 seconds. Adjust `config/wayoled/profiles/default.conf` if the
-display scale or bar height changes. The current panel uses 150% scaling, so
-the mask does not map one-to-one to physical pixels.
-
-`scripts/wayoled-bar.py` supervises WayOLED and checks Niri layers every 750 ms.
-It removes the mask when the bar is absent or in `overlay`, then recreates it
-above the bar when it returns to `top`. Fullscreen windows cover both top-layer
-surfaces. The local patch makes the mask click-through and puts it in `top`.
-Automatic dimming and color-temperature changes are disabled.
-
-`scripts/install-wayoled.sh` builds upstream revision
-`2fde47fa51fa28ff4b0aa0aa1bc3983f28d7e0f0` with `patches/wayoled/niri-bar.patch`
-and installs only the two binaries in `~/.local/lib/wayoled`. No root helper or
-udev rule is installed. Build dependencies include `meson`, `ninja`, `gcc`,
-`pkgconf`, `wayland` and `wayland-protocols`. The main installer runs this step;
-set `SKIP_WAYOLED=1` to skip building it.
-
-After linking the configs and building, start or stop the effect with:
-
-```sh
-systemctl --user daemon-reload
-systemctl --user start wayoled-bar.service
-systemctl --user stop wayoled-bar.service
-```
-
-This reduces static exposure; it does not guarantee prevention of burn-in.
-Upstream: <https://github.com/Youwes09/WayOLED>.
-
 ## Packages
 
 My package lists:

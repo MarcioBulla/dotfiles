@@ -17,7 +17,3 @@ if [ "${SKIP_SDDM:-0}" != "1" ]; then
 fi
 
 "${repo_dir}/scripts/install-symlinks.sh"
-
-if [ "${SKIP_WAYOLED:-0}" != "1" ]; then
-  "${repo_dir}/scripts/install-wayoled.sh"
-fi

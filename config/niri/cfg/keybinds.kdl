@@ -141,6 +141,6 @@ binds {
 
     // ─── Exit / Power ───
     CTRL+ALT+Delete                     { quit; } // Also quits Niri
-    Mod+Shift+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
+    Mod+Shift+P                         { power-off-monitors; } // Turn off screens for privacy or power saving
     Mod+O                               repeat=false { toggle-overview; }
 }
