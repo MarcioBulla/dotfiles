@@ -1,7 +1,6 @@
 openlogi-agent.service      enabled enabled
 syncthing.service           enabled enabled
 voxtype.service             enabled enabled
-wayoled-bar.service         enabled enabled
 wireplumber.service         enabled enabled
 xdg-user-dirs.service       enabled enabled
 gnome-keyring-daemon.socket enabled enabled
