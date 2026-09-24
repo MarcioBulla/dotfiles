@@ -54,6 +54,7 @@ cryptsetup
 device-mapper
 diffutils
 discord
+dmemcg-booster
 dmidecode
 dmraid
 dnsmasq
@@ -200,6 +201,7 @@ perl
 pipewire-alsa
 pipewire-pulse
 pkgfile
+plasma-foreground-booster
 platformio-core
 plocate
 plymouth

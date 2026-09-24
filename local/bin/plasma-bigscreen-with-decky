@@ -30,12 +30,16 @@ cleanup() {
   if [[ -n "$output_config_pid" ]]; then
     kill "$output_config_pid" >/dev/null 2>&1 || true
   fi
+  /usr/bin/systemctl --user stop plasma-bigscreen-foreground-booster.service \
+    >/dev/null 2>&1 || true
   /usr/bin/systemctl stop --no-block decky-bigscreen.service >/dev/null 2>&1 || true
 }
 trap cleanup EXIT HUP INT TERM
 
 /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/plasma-bigscreen-wayland &
 plasma_pid=$!
+/usr/bin/systemctl --user start --no-block dmemcg-booster-user.service
+/usr/bin/systemctl --user start --no-block plasma-bigscreen-foreground-booster.service
 configure_bigscreen_output &
 output_config_pid=$!
 wait "$plasma_pid"

@@ -17,3 +17,5 @@ install -Dm644 \
   /etc/polkit-1/rules.d/49-decky-bigscreen.rules
 
 systemctl daemon-reload
+systemctl enable dmemcg-booster-system.service
+systemctl --global enable dmemcg-booster-user.service

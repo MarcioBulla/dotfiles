@@ -1,0 +1,12 @@
+[Unit]
+Description=Foreground VRAM booster for Plasma Bigscreen
+
+[Service]
+Type=dbus
+BusName=org.kde.foreground-booster
+ExecStartPre=/usr/bin/bash -c 'for attempt in {1..30}; do /usr/bin/busctl --user --quiet status org.kde.KWin && exit 0; sleep 1; done; exit 1'
+ExecStart=/usr/bin/foreground_booster
+Restart=on-failure
+RestartSec=1
+Slice=background.slice
+TimeoutStartSec=35
