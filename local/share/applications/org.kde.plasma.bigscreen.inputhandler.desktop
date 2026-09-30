@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Plasma Bigscreen Input Handler
+Exec=/usr/bin/plasma-bigscreen-inputhandler
+Icon=gamepad
+Type=Application
+NoDisplay=true
+OnlyShowIn=KDE;
+X-KDE-Wayland-Interfaces=org_kde_kwin_fake_input,org_kde_plasma_window_management
